@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView
+	xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    >
+
+    
+	<TextView  
+    	android:layout_width="fill_parent" 
+    	android:layout_height="wrap_content" 
+    	android:text="@string/hello"
+    />
+    
+    <LinearLayout 
+    	android:orientation="horizontal" 
+    	android:layout_width="wrap_content" 
+    	android:layout_height="wrap_content" >
+    	<Button
+    		android:id="@+id/frameLayout"
+    		android:layout_width="wrap_content"
+    		android:layout_height="wrap_content"
+    		android:text="@string/frameLayout"
+    	/>
+    	<Button
+    		android:id="@+id/relativeLayout"
+    		android:layout_width="wrap_content"
+    		android:layout_height="wrap_content"
+    		android:text="@string/relativeLayout"
+    	/>
+
+    </LinearLayout>
+    
+    <LinearLayout 
+    	android:orientation="horizontal" 
+    	android:layout_width="wrap_content" 
+    	android:layout_height="wrap_content" >
+     	<Button
+    		android:id="@+id/relativeAndLinear"
+    		android:layout_width="wrap_content"
+    		android:layout_height="wrap_content"
+    		android:text="@string/relativeAndLinear"
+    	/>
+    	<Button
+    		android:id="@+id/tableLayout"
+    		android:layout_width="wrap_content"
+    		android:layout_height="wrap_content"
+    		android:text="@string/tableLayout"
+    	/>  		
+    </LinearLayout>
+
+
+    <LinearLayout 
+    	android:orientation="horizontal" 
+    	android:layout_width="wrap_content" 
+    	android:layout_height="wrap_content" >
+     	<Button
+    		android:id="@+id/tabWidget"
+    		android:layout_width="wrap_content"
+    		android:layout_height="wrap_content"
+    		android:text="@string/tabWidget"
+    	/>
+    	<Button
+    		android:id="@+id/checkbox"
+    		android:layout_width="wrap_content"
+    		android:layout_height="wrap_content"
+    		android:text="@string/checkbox"
+    	/>
+    </LinearLayout>
+    
+    <LinearLayout 
+    	android:orientation="horizontal" 
+    	android:layout_width="wrap_content" 
+    	android:layout_height="wrap_content" >
+     	<Button
+    		android:id="@+id/radioGroup"
+    		android:layout_width="wrap_content"
+    		android:layout_height="wrap_content"
+    		android:text="@string/radioGroup"
+    	/>
+    	<Button
+    		android:id="@+id/spinner"
+    		android:layout_width="wrap_content"
+    		android:layout_height="wrap_content"
+    		android:text="@string/spinner"
+    	/>
+    </LinearLayout>
+    
+    <LinearLayout 
+    	android:orientation="horizontal" 
+    	android:layout_width="wrap_content" 
+    	android:layout_height="wrap_content" >
+     	<Button
+    		android:id="@+id/autoCompleteTextView"
+    		android:layout_width="wrap_content"
+    		android:layout_height="wrap_content"
+    		android:text="@string/autoCompleteTextView"
+    	/>
+    	<Button
+    		android:id="@+id/datePicker"
+    		android:layout_width="wrap_content"
+    		android:layout_height="wrap_content"
+    		android:text="@string/datePicker"
+    	/>
+    </LinearLayout>   
+    
+    <LinearLayout 
+    	android:orientation="horizontal" 
+    	android:layout_width="wrap_content" 
+    	android:layout_height="wrap_content" >
+     	<Button
+    		android:id="@+id/progressBar"
+    		android:layout_width="wrap_content"
+    		android:layout_height="wrap_content"
+    		android:text="@string/progressBar"
+    	/>
+    	<Button
+    		android:id="@+id/ratingBar"
+    		android:layout_width="wrap_content"
+    		android:layout_height="wrap_content"
+    		android:text="@string/ratingBar"
+    	/>
+    </LinearLayout>
+    
+    <LinearLayout 
+    	android:orientation="horizontal" 
+    	android:layout_width="wrap_content" 
+    	android:layout_height="wrap_content" >
+     	<Button
+    		android:id="@+id/imageShow"
+    		android:layout_width="wrap_content"
+    		android:layout_height="wrap_content"
+    		android:text="@string/imageShow"
+    	/>
+    	<Button
+    		android:id="@+id/gridView"
+    		android:layout_width="wrap_content"
+    		android:layout_height="wrap_content"
+    		android:text="@string/gridView"
+    	/>
+    </LinearLayout>
+    
+    <LinearLayout 
+    	android:orientation="horizontal" 
+    	android:layout_width="wrap_content" 
+    	android:layout_height="wrap_content" >
+     	<Button
+    		android:id="@+id/tabDemo"
+    		android:layout_width="wrap_content"
+    		android:layout_height="wrap_content"
+    		android:text="@string/tab"
+    	/>
+    	<Button
+    		android:id="@+id/menu1"
+    		android:layout_width="wrap_content"
+    		android:layout_height="wrap_content"
+    		android:text="@string/optionsMenu"
+    	/>
+    	<Button
+    		android:id="@+id/menu2"
+    		android:layout_width="wrap_content"
+    		android:layout_height="wrap_content"
+    		android:text="@string/contextMenu"
+    	/>
+    </LinearLayout>
+    
+    <LinearLayout 
+    	android:orientation="horizontal" 
+    	android:layout_width="wrap_content" 
+    	android:layout_height="wrap_content" >
+    	<Button
+    		android:id="@+id/menu3"
+    		android:layout_width="wrap_content"
+    		android:layout_height="wrap_content"
+    		android:text="@string/subMenu"
+    	/>
+    	
+    	<Button
+    		android:id="@+id/bundle"
+    		android:layout_width="wrap_content"
+    		android:layout_height="wrap_content"
+    		android:text="@string/bundle"
+    	/>
+    	
+    	<Button
+    		android:id="@+id/alertDialog"
+    		android:layout_width="wrap_content"
+    		android:layout_height="wrap_content"
+    		android:text="@string/alertDialog"
+    	/>
+    </LinearLayout>
+    
+    <LinearLayout 
+    	android:orientation="horizontal" 
+    	android:layout_width="wrap_content" 
+    	android:layout_height="wrap_content" >
+    	<Button
+    		android:id="@+id/notification"
+    		android:layout_width="wrap_content"
+    		android:layout_height="wrap_content"
+    		android:text="@string/notification"
+    	/>
+    	
+    	<Button
+    		android:id="@+id/bundle"
+    		android:layout_width="wrap_content"
+    		android:layout_height="wrap_content"
+    		android:text=""
+    	/>
+    	
+    	<Button
+    		android:id="@+id/alertDialog"
+    		android:layout_width="wrap_content"
+    		android:layout_height="wrap_content"
+    		android:text=""
+    	/>
+    </LinearLayout>
+          
+</LinearLayout>
+
+</ScrollView>

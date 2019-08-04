@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent"
+	android:orientation="vertical"
+	>
+	
+	<TextView
+		android:id="@+id/label"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:text="多选控件："
+	/>
+	
+	<CheckBox
+		android:id="@+id/plain_cb"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:text="AA"
+	/>
+	
+	<CheckBox
+		android:id="@+id/serif_cb"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:text="BB"
+	/>
+	
+	<CheckBox
+		android:id="@+id/bold_cb"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:text="CC"
+	/>
+	
+	<CheckBox
+		android:id="@+id/italic_cb"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:text="DD"/>
+	<Button 
+		android:id="@+id/button1"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:text="获取checkbox" />
+	
+</LinearLayout>

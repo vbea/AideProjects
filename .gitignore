@@ -1,0 +1,6 @@
+obj/
+bin/
+.vs/
+Properties/
+*.suo
+Backup/

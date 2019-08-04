@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="hello">基本布局、组件！！！</string>
+    <string name="app_name">基础组件测试</string>
+    
+    <string name="frameLayout">FrameLayout</string>
+    <string name="relativeLayout">RelativeLayout</string>
+    <string name="relativeAndLinear">RelativeAndLinear</string>
+    <string name="tableLayout">TableLayout</string>
+    <string name="tabWidget">选项卡TabWidget</string>
+    <string name="checkbox">CheckBox多选框</string>
+    <string name="radioGroup">RadioGroup单选框</string>
+    <string name="spinner">Spinner下拉框</string>
+    <string name="autoCompleteTextView">AutoCompleteTextView</string>
+    <string name="datePicker">Date、TimePicker</string>
+    <string name="progressBar">ProgressBar进度条</string>
+    <string name="ratingBar">RatingBar投票</string>
+    <string name="imageShow">ImageSwitcher、Gallery</string>
+    <string name="gridView">GridView网络视图</string>
+    <string name="tab">Tab标签</string>
+    <string name="optionsMenu">OptionsMenu</string>
+	<string name="contextMenu">ContextMenu</string>
+    <string name="subMenu">SubMenu</string>
+    <string name="bundle">Activity值传递</string>
+    <string name="alertDialog">4种AlertDialog</string>
+    <string name="alertDialog1">有两个button的对话框1</string>
+    <string name="alertDialog2">有三个button的对话框2</string>
+    <string name="alertDialog3">能进行输入的对话框</string>
+    <string name="alertDialog4">进度框</string>
+    <string name="notification">Notification</string>
+        
+    <string name="menu_button1">第一个按钮</string>
+    <string name="menu_button2">第二个按钮</string>
+    
+    <string name="ok">确定</string>
+    <string name="startButton">开始</string>
+    <string name="stopButton">暂停</string>
+    
+    <drawable name="blue">#770000ff</drawable>
+    <drawable name="yellow">#77ffff00</drawable>
+    <drawable name="red">#00FF99</drawable>
+</resources>

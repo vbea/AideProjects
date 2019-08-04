@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<TableLayout 
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent"
+	android:stretchColumns="1"
+>
+	<TableRow>
+	
+		<TextView 
+			android:text="用户名："
+			android:textStyle="bold"
+			android:gravity="right"
+			android:padding="3dip"
+		/>
+		<EditText
+			android:id="@+id/username"
+			android:padding="3dip"
+			android:scrollHorizontally="true"
+		/>
+			
+	</TableRow>
+	
+	<TableRow>
+		<TextView
+			android:text="密码："
+			android:textStyle="bold"
+			android:gravity="right"
+			android:padding="3dip"
+		/>
+		<EditText
+			android:id="@+id/password"
+			android:password="true"
+			android:padding="3dip"
+			android:scrollHorizontally="true"
+		/>
+	</TableRow>
+</TableLayout>

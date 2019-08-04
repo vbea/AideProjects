@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:orientation="vertical"
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent">
+
+	<Button
+		android:id="@+id/sum_1"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:text="适合"/>
+		
+	<Button
+		android:id="@+id/cloudy_1"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:text="不太适合"/>
+		
+	<Button
+		android:id="@+id/rain_1"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:text="一点也不适合"/>
+		
+		
+	<TextView
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:text="notification高级提示：声音、震动调试失败！！！"/>
+		
+	<Button
+		android:id="@+id/defaultSound"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:text="有声音提示"/>
+		
+	<Button
+		android:id="@+id/defaultVibrate"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:text="震动提示"/>
+		
+	<Button
+		android:id="@+id/defaultAll"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:text="声音+震动提示"/>
+	
+	<Button
+		android:id="@+id/clear"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:text="清除提示"/>									
+			
+</LinearLayout>
+

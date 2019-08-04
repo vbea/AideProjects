@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+      package="com.cellcom"
+      android:versionCode="1"
+      android:versionName="1.0">
+    <uses-sdk android:minSdkVersion="8" />
+
+    <application android:icon="@drawable/icon" android:label="@string/app_name">
+        <activity android:name="com.niit.rolant.MainActivity"
+                  android:label="@string/app_name">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+		
+		<activity android:name="com.niit.rolant.FrameLayoutActivity" />
+		<activity android:name="com.niit.rolant.RelativeAndLinearActivity" />
+		<activity android:name="com.niit.rolant.RelativeLayoutActivity" />
+		<activity android:name="com.niit.rolant.TableLayoutActivity" />
+		<activity android:name="com.niit.rolant.TabWidgetActivity"/>
+		<activity android:name="com.niit.rolant.CheckBoxActivity"/>
+		<activity android:name="com.niit.rolant.RadioGroupActivity"/>
+		<activity android:name="com.niit.rolant.SpinnerActivity"/>
+		<activity android:name="com.niit.rolant.AutoCompleteTextViewActivity"/>
+		<activity android:name="com.niit.rolant.DatePickerActivity"/>
+		<activity android:name="com.niit.rolant.ProgressBarHandlerActivity"/>
+		<activity android:name="com.niit.rolant.RatingBarActivity"/>
+		<activity android:name="com.niit.rolant.ImageShowActivity"/>
+		<activity android:name="com.niit.rolant.GridViewActivity"/>
+		<activity android:name="com.niit.rolant.TabDemoActivity"/>
+		<activity android:name="com.niit.rolant.OptionsMenuActivity"/>
+		<activity android:name="com.niit.rolant.ContextMenuActivity"/>
+		<activity android:name="com.niit.rolant.SubMenuActivity"/>
+		<activity android:name="com.niit.rolant.Bundle1Activity"></activity>
+		<activity android:name="com.niit.rolant.Bundle2Activity"></activity>
+		<activity android:name="com.niit.rolant.AlertDialogActivity"></activity>
+		<activity android:name="com.niit.rolant.NotificationActivity"></activity>
+		
+    </application>
+    <uses-permission android:name="android.permission.VIBRATE" />
+</manifest>

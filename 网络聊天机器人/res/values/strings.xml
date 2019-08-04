@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="hello">欢迎来到汐黛的世界！</string>
+    <string name="app_name">机器人-汐黛</string>
+	<string name="help">本机器人支持聊天对话，智能问答\n拥有笑话、天气、翻译、百科等丰富功能\n支持自然语言处理及语义理解\n可教机器人学习，格式：\n\t“问：xxx 答：xxx”</string>
+	<string name="about">机器人：汐黛\n\t版本：v1.0\n\t时间：2014-10-25\n\t制作：邠心工作室\n\t网站：http://www.vbes.tk\n\t论坛：http://www.vbes.tk/bbs\n\t论坛：http://vbea.wicp.net</string>
+</resources>

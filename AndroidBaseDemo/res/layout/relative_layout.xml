@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent"
+	android:layout_height="wrap_content"
+	android:background="@drawable/blue"
+	android:padding="10dip"
+	>
+	
+	<TextView
+		android:id="@+id/label"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:text="请输入用户名："
+	/>
+	
+	<!--
+		这个EditText放置在上边id为label的TextView的下边
+	-->
+	<EditText
+		android:id="@+id/entry"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:background="@android:drawable/editbox_background"
+		android:layout_below="@id/label"
+	/>
+	
+	<!--
+		取消按钮和容器的右边齐平，并且设置左边的边距为10dip
+	-->
+	<Button
+		android:id="@+id/cancel"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_below="@id/entry"
+		android:layout_alignParentRight="true"
+		android:layout_marginLeft="10dip"
+		android:text="取消"
+	/>
+	
+	<!--
+		确定按钮在取消按钮的左侧，并且和取消按钮的高度齐平
+	-->
+	<Button
+		android:id="@+id/ok"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_toLeftOf="@id/cancel"
+		android:layout_alignTop="@id/cancel"
+		android:text="确定"
+	/>
+	
+</RelativeLayout>

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent"
+	android:orientation="vertical"
+	android:background="#ffffff">
+
+	<EditText
+		android:id="@+id/txtResult"
+		android:layout_width="fill_parent"
+		android:layout_height="50dp"
+		android:hint="结果"/>
+
+	<LinearLayout
+		android:layout_height="fill_parent"
+		android:layout_width="fill_parent"
+		android:layout_marginTop="20dp"
+		android:orientation="vertical">
+		<LinearLayout
+			android:layout_height="45dp"
+			android:layout_width="fill_parent"
+			android:orientation="horizontal">
+			<TextView
+				android:layout_width="wrap_content"
+				android:layout_height="fill_parent"
+				android:gravity="center"
+				android:textSize="18sp"
+				android:textColor="#000000"
+				android:text="数据："/>
+			<EditText
+				android:id="@+id/txtMsg"
+				android:layout_width="fill_parent"
+				android:layout_height="fill_parent"
+				android:hint="请输入文本信息"/>
+		</LinearLayout>
+		<LinearLayout
+			android:layout_height="45dp"
+			android:layout_width="fill_parent"
+			android:layout_marginTop="20dp"
+			android:orientation="horizontal">
+			<TextView
+				android:layout_width="wrap_content"
+				android:layout_height="fill_parent"
+				android:gravity="center"
+				android:textSize="18sp"
+				android:textColor="#000000"
+				android:text="密码："/>
+			<EditText
+				android:id="@+id/txtPsd"
+				android:layout_width="fill_parent"
+				android:layout_height="fill_parent"
+				android:password="true"
+				android:hint="请输入密码"/>
+		</LinearLayout>
+		<LinearLayout
+			android:layout_height="45dp"
+			android:layout_width="fill_parent"
+			android:layout_marginTop="20dp"
+			android:orientation="horizontal">
+		<Button
+			android:id="@+id/btnEcip"
+			android:layout_width="fill_parent"
+			android:layout_height="45dp"
+			android:layout_weight="1"
+			android:text="加密"/>
+		<Button
+			android:id="@+id/btnDcip"
+			android:layout_width="fill_parent"
+			android:layout_height="45dp"
+			android:layout_weight="1"
+			android:text="解密"/>
+		</LinearLayout>
+	</LinearLayout>
+
+</LinearLayout>
+

@@ -1,0 +1,67 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>邠心工作室</title>
+    <style type="text/css">
+        .mumu {
+            width: 70px;
+            height: 108px;
+            cursor: move;
+            background: url(pet-1a.png) no-repeat;
+        }
+
+        .spig {
+            display: block;
+            width: 150px;
+            height: auto;
+            position: absolute;
+            top: -200px;
+            left: 160px;
+            z-index: 9999;
+        }
+
+        #message {
+            color: #191919;
+            border: 1px solid #c4c4c4;
+            background: #ddd;
+            -moz-border-radius: 5px;
+            -webkit-border-radius: 5px;
+            border-radius: 5px;
+            min-height: 1em;
+            padding: 5px;
+            top: -30px;
+            position: absolute;
+            text-align: center;
+            width: auto !important;
+            z-index: 10000;
+            -moz-box-shadow: 0 0 15px #eeeeee;
+            -webkit-box-shadow: 0 0 15px #eeeeee;
+            border-color: #eeeeee;
+            box-shadow: 0 0 15px #eeeeee;
+            outline: none;
+        }
+    </style>
+    <script src="Script/jquery-1.4.1.min.js"></script>
+    <script src="Script/pig.js"></script>
+    <script type="text/javascript">
+        var right_click = '你想干啥呀？';
+        var onoff_move = '1';
+        var touch_array = ["不要摸我", "再摸我，我就杀掉你！", "干嘛老摸我啊？", "非礼呀！！！！！", "我可以告你性侵犯吗？", "色狼啊啊！"];
+        var bored_array = ["陪我聊天吧！", "好无聊哦，你都不陪我玩！", "啦啦啦！！！", "我可爱吧！嘻嘻!~^_^!~~", "求抱抱，么么！！"];
+        var move_array = ["我在飞，啦啦啦啦！", "看，我在玩凌波微步！", "快去凑热闹哦", "站住，不要跑！@_@", "围观去咯！", "跑不动啦！累死我了！"];
+        var over_array = ["我隐身了，你看不到我", "我会隐身哦！嘿嘿！", "别动手动脚的，把手拿开！", "把手拿开我才出来！", "真忍术隐！"];
+        var visitor = '';
+        jQuery.noConflict();
+    </script>
+</head>
+<body>
+    <div style="width:100%; height:1200px;">
+        <p>邠心工作室</p>
+        <div id="spig" class="spig">
+            <div id="message">Loading...</div>
+            <div id="mumu" class="mumu"></div>
+        </div>
+    </div>
+</body>
+</html>

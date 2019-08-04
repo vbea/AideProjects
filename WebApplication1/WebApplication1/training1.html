@@ -1,0 +1,76 @@
+﻿<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <title>Java实战训练题（一）- 邠心工作室</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <script src="Script/shCore.js" type="text/javascript"></script>
+    <script src="Script/shBrushJava.js" type="text/javascript"></script>
+    <link href="css/shCoreDefault.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript">
+        SyntaxHighlighter.all();
+    </script>
+    <style type="text/css">
+        .div
+        {
+            padding: 0 1%;
+        }
+    </style>
+</head>
+<body>
+<div style="width: 320px; background-color: #FFF; margin: 0 auto;">
+<div style="width: 100%; text-align: center; font-size: 1.1em;">Java实战训练（一）</div>
+<div style="font-size:0.8em; text-align:center;">(总分100分，考试时间60分)</div><br />
+<div class="div">
+1、请大概描述一下Vector和ArrayList的区别，Hashtable和HashMap的区别。(5分)<br />
+2、请问你在什么情况下会在你的JAVA代码中使用可序列化？(5分)<br />
+为什么放到HttpSession中的对象必须要是可序列化的？(5分)<br />
+3、为什么在重写了equals()方法之后也必须重写hashCode()方法？(5分)<br />
+4、sleep()和wait()有什么区别？(5分)<br />
+5、编程题：用最有效率的方法算出2乘以17等于多少？(5分)<br />
+6、JAVA是不是没有内存泄漏问题？看下面的代码片段，并指出这些代码隐藏的问题。(10分)<br />
+<pre class="brush:java">
+Object[] elements = new Object[10]; 
+int size; 
+...
+
+public Object pop() { 
+    if (size == 0) 
+        return null; 
+    Object o = elements[--size]; 
+    return o; 
+}
+</pre>
+7、请阐述一下你对JAVA多线程中“锁”的概念的理解。(10分)<br />
+8、所有的递归实现都可以用循环的方式实现，请描述一下这两种实现方式各自的优劣。并举例说明在什么情况下可以使用递归，而在什么情况下只能使用循环而不能使用递归？(10分)<br />
+9、请简要讲一下你对测试驱动开发（TDD）的认识。(5分)<br />
+10、请阐述一下你对“面向接口编程”的理解。(10分)<br />
+11、在J2EE中有一个“容器（Container）”的概念，不管是EJB、PICO还是Spring都有他们各自实现的容器，受容器管理的组件会具有有生命周期的特性，请问，为什么需要容器？它的好处在哪里？它会带来什么样的问题？(10分)<br />
+12、请阐述一下你对IOC（Inversion of Control）的理解。（可以以PICO和Spring的IOC作为例子说明他们在实现上各自的特点）(5分)<br />
+13、下面的代码在绝大部分时间内都运行得很正常，请问在什么情况下会出现问题？问题的根源在哪里？(10分)<br />
+<pre class="brush:java">
+import java.util.LinkedList;
+public class Stack {
+    LinkedList list = new LinkedList();
+    public synchronized void push(Object x) { 
+        synchronized(list) { 
+            list.addLast( x );
+            notify(); 
+        } 
+    } 
+
+    public synchronized Object pop() throws Exception { 
+        synchronized(list) { 
+            if( list.size() <= 0 ) {
+                wait(); 
+            } 
+            return list.removeLast(); 
+        } 
+    } 
+}
+</pre>
+</div>
+<div style="font-size:0.8em; text-align:right;">《21天学通Java》整理提供-2015.12.21</div>
+</div>
+</body>
+</html>

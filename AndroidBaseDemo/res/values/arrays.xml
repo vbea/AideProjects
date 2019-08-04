@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string-array name="counties">
+		<item>AAA</item>
+		<item>BBB</item>
+		<item>CCC</item>
+		<item>DDD</item>
+		<item>EEE</item>
+	</string-array>
+</resources>

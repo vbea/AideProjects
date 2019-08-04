@@ -1,0 +1,375 @@
+﻿<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <title>Java编程题</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <script src="Script/shCore.js" type="text/javascript"></script>
+    <script src="Script/shBrushJava.js" type="text/javascript"></script>
+    <link href="css/shCoreDefault.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript">
+        SyntaxHighlighter.all();
+    </script>
+    <style type="text/css">
+        .div
+        {
+            padding: 0 1%;
+        }
+    </style>
+</head>
+<body>
+<div style="width: 320px; background-color: #FFF; margin: 0 auto;">
+<div style="width: 100%; text-align: center; font-size: 1.1em;">Java编程题</div><br />
+<div class="div">
+1．现在输入n个数字，以逗号，分开；然后可选择升或者降序排序；按提交键就在另一页面显示按什么排序，结果为，提供reset。
+<pre class="brush:java">
+import java.util.*;
+public class bycomma {
+    public static String[] splitStringByComma(String source) {
+        if(source==null||source.trim().equals(""))
+        return null;
+        StringTokenizer commaToker = new StringTokenizer(source,",");
+        String[] result = new String[commaToker.countTokens()];
+        int i=0;
+        while(commaToker.hasMoreTokens()) {
+            result[i] = commaToker.nextToken();
+            i++;
+        }
+        return result;
+    }
+    public static void main(String args[]) {
+        String[] s = splitStringByComma("5,8,7,4,3,9,1");
+        int[] ii = new int[s.length];
+        for (int i = 0;i&lt;s.length;i++) {
+            ii&nbsp;[i] = Integer.parseInt(s[i]);
+        }
+        Arrays.sort(ii);
+        //asc
+        for (int i=0;i&lt;s.length;i++) {
+            System.out.println(ii[i]);
+        }
+        //desc
+        for (int i=(s.length-1);i>=0;i--) {
+            System.out.println(ii[i]);
+        }
+    }
+}
+</pre>
+2．金额转换，阿拉伯数字的金额转换成中国传统的形式如：（￥1011）－>（一千零一拾一元整）输出。
+<pre class="brush:java">
+package test.format;
+import java.text.NumberFormat;
+import java.util.HashMap;
+public class SimpleMoneyFormat {
+    public static final String EMPTY = "";
+    public static final String ZERO = "零";
+    public static final String ONE = "壹";
+    public static final String TWO = "贰";
+    public static final String THREE = "叁";
+    public static final String FOUR = "肆";
+    public static final String FIVE = "伍";
+    public static final String SIX = "陆";
+    public static final String SEVEN = "柒";
+    public static final String EIGHT = "捌";
+    public static final String NINE = "玖";
+    public static final String TEN = "拾";
+    public static final String HUNDRED = "佰";
+    public static final String THOUSAND = "仟";
+    public static final String TEN_THOUSAND = "万";
+    public static final String HUNDRED_MILLION = "亿";
+    public static final String YUAN = "元";
+    public static final String JIAO = "角";
+    public static final String FEN = "分";
+    public static final String DOT = ".";
+    private static SimpleMoneyFormat formatter = null;
+    private HashMap chineseNumberMap = new HashMap();
+    private HashMap chineseMoneyPattern = new HashMap();
+    private NumberFormat numberFormat = NumberFormat.getInstance();
+
+    private SimpleMoneyFormat() {
+        numberFormat.setMaximumFractionDigits(4);
+        numberFormat.setMinimumFractionDigits(2);
+        numberFormat.setGroupingUsed(false);
+        chineseNumberMap.put("0", ZERO);
+        chineseNumberMap.put("1", ONE);
+        chineseNumberMap.put("2", TWO);
+        chineseNumberMap.put("3", THREE);
+        chineseNumberMap.put("4", FOUR);
+        chineseNumberMap.put("5", FIVE);
+        chineseNumberMap.put("6", SIX);
+        chineseNumberMap.put("7", SEVEN);
+        chineseNumberMap.put("8", EIGHT);
+        chineseNumberMap.put("9", NINE);
+        chineseNumberMap.put(DOT, DOT);
+        chineseMoneyPattern.put("1", TEN);
+        chineseMoneyPattern.put("2", HUNDRED);
+        chineseMoneyPattern.put("3", THOUSAND);
+        chineseMoneyPattern.put("4", TEN_THOUSAND);
+        chineseMoneyPattern.put("5", TEN);
+        chineseMoneyPattern.put("6", HUNDRED);
+        chineseMoneyPattern.put("7", THOUSAND);
+        chineseMoneyPattern.put("8", HUNDRED_MILLION);
+    }
+
+    public static SimpleMoneyFormat getInstance() {
+        if (formatter == null)
+        formatter = new SimpleMoneyFormat();
+        return formatter;
+    }
+
+    public String format(String moneyStr) {
+        checkPrecision(moneyStr);
+        String result;
+        result = convertToChineseNumber(moneyStr);
+        result = addUnitsToChineseMoneyString(result);
+        return result;
+    }
+
+    public String format(double moneyDouble) {
+        return format(numberFormat.format(moneyDouble));
+    }
+
+    public String format(int moneyInt) {
+        return format(numberFormat.format(moneyInt));
+    }
+
+    public String format(long moneyLong) {
+        return format(numberFormat.format(moneyLong));
+    }
+
+    public String format(Number moneyNum) {
+        return format(numberFormat.format(moneyNum));
+    }
+
+    private String convertToChineseNumber(String moneyStr) {
+        String result;
+        StringBuffer cMoneyStringBuffer = new StringBuffer();
+        for (int i = 0; i < moneyStr.length(); i++) {
+            cMoneyStringBuffer.append(chineseNumberMap.get(moneyStr.substring(i, i + 1)));
+        }
+        //拾佰仟万亿等都是汉字里面才有的单位，加上它们
+        int indexOfDot = cMoneyStringBuffer.indexOf(DOT);
+        int moneyPatternCursor = 1;
+        for (int i = indexOfDot - 1; i > 0; i--) {
+            cMoneyStringBuffer.insert(i, chineseMoneyPattern.get(EMPTY + moneyPatternCursor));
+            moneyPatternCursor = moneyPatternCursor == 8 ? 1 : moneyPatternCursor + 1;
+        }
+
+        String fractionPart = cMoneyStringBuffer.substring(cMoneyStringBuffer.indexOf("."));
+        cMoneyStringBuffer.delete(cMoneyStringBuffer.indexOf("."), cMoneyStringBuffer.length());
+        while (cMoneyStringBuffer.indexOf("零拾") != -1) {
+            cMoneyStringBuffer.replace(cMoneyStringBuffer.indexOf("零拾"), cMoneyStringBuffer.indexOf("零拾") + 2, ZERO);
+        }
+        while (cMoneyStringBuffer.indexOf("零佰") != -1) {
+            cMoneyStringBuffer.replace(cMoneyStringBuffer.indexOf("零佰"), cMoneyStringBuffer.indexOf("零佰") + 2, ZERO);
+        }
+        while (cMoneyStringBuffer.indexOf("零仟") != -1) {
+            cMoneyStringBuffer.replace(cMoneyStringBuffer.indexOf("零仟"), cMoneyStringBuffer.indexOf("零仟") + 2, ZERO);
+        }
+        while (cMoneyStringBuffer.indexOf("零万") != -1) {
+            cMoneyStringBuffer.replace(cMoneyStringBuffer.indexOf("零万"), cMoneyStringBuffer.indexOf("零万") + 2, TEN_THOUSAND);
+        }
+        while (cMoneyStringBuffer.indexOf("零亿") != -1) {
+            cMoneyStringBuffer.replace(cMoneyStringBuffer.indexOf("零亿"), cMoneyStringBuffer.indexOf("零亿") + 2, HUNDRED_MILLION);
+        }
+        while (cMoneyStringBuffer.indexOf("零零") != -1) {
+            cMoneyStringBuffer.replace(cMoneyStringBuffer.indexOf("零零"), cMoneyStringBuffer.indexOf("零零") + 2, ZERO);
+        }
+        if (cMoneyStringBuffer.lastIndexOf(ZERO) == cMoneyStringBuffer.length() - 1)
+        cMoneyStringBuffer.delete(cMoneyStringBuffer.length() - 1, cMoneyStringBuffer.length());
+        cMoneyStringBuffer.append(fractionPart);
+        result = cMoneyStringBuffer.toString();
+        return result;
+    }
+
+    private String addUnitsToChineseMoneyString(String moneyStr) {
+        String result;
+        StringBuffer cMoneyStringBuffer = new StringBuffer(moneyStr);
+        int indexOfDot = cMoneyStringBuffer.indexOf(DOT);
+        cMoneyStringBuffer.replace(indexOfDot, indexOfDot + 1, YUAN);
+        cMoneyStringBuffer.insert(cMoneyStringBuffer.length() - 1, JIAO);
+        cMoneyStringBuffer.insert(cMoneyStringBuffer.length(), FEN);
+        if (cMoneyStringBuffer.indexOf("零角零分") != -1)//没有零头，加整
+            cMoneyStringBuffer.replace(cMoneyStringBuffer.indexOf("零角零分"), cMoneyStringBuffer.length(), "整");
+        else if (cMoneyStringBuffer.indexOf("零分") != -1)//没有零分，加整
+            cMoneyStringBuffer.replace(cMoneyStringBuffer.indexOf("零分"), cMoneyStringBuffer.length(), "整");
+        else {
+            if(cMoneyStringBuffer.indexOf("零角")!=-1)
+                cMoneyStringBuffer.delete(cMoneyStringBuffer.indexOf("零角"),cMoneyStringBuffer.indexOf("零角")+2);
+                // tmpBuffer.append("整");
+        }
+        result = cMoneyStringBuffer.toString();
+        return result;
+    }
+
+    private void checkPrecision(String moneyStr) {
+        int fractionDigits = moneyStr.length() - moneyStr.indexOf(DOT) - 1;
+        if (fractionDigits > 2)
+            throw new RuntimeException("金额" + moneyStr + "的小数位多于两位。"); //精度不能比分低
+    }
+
+    public static void main(String args[]) {
+        System.out.println(getInstance().format(new Double(10010001.01)));
+    }
+}
+</pre>
+3、继承时候类的执行顺序问题,一般都是选择题,问你将会打印出什么?<br />
+答:父类：
+<pre class="brush:java">
+package test; 
+public class FatherClass {
+    public FatherClass() {
+        System.out.println("FatherClass Create"); 
+    } 
+}
+</pre>
+子类: 
+<pre class="brush:java">
+package test; 
+import test.FatherClass; 
+public class ChildClass extends FatherClass { 
+    public ChildClass() { 
+        System.out.println("ChildClass Create"); 
+    } 
+    public static void main(String[] args) { 
+        FatherClass fc = new FatherClass(); 
+        ChildClass cc = new ChildClass(); 
+    } 
+} 
+</pre>
+输出结果：<br />
+C:>java test.ChildClass<br />
+ FatherClass Create<br />
+ FatherClass Create<br />
+ ChildClass Create<br />
+4、内部类的实现方式?<br />
+答：示例代码如下：
+<pre class="brush:java">
+package test; 
+public class OuterClass { 
+    private class InterClass { 
+        public InterClass() { 
+            System.out.println("InterClass Create"); 
+        } 
+    } 
+    public OuterClass() { 
+        InterClass ic = new InterClass(); 
+        System.out.println("OuterClass Create"); 
+    } 
+    public static void main(String[] args) { 
+        OuterClass oc = new OuterClass(); 
+    } 
+}
+</pre>
+输出结果: <br />
+C:>java test/OuterClass<br />
+ InterClass Create<br />
+ OuterClass Create<br />
+5、Java 的通信编程，编程题(或问答)，用JAVA SOCKET编程，读服务器几个字符，再写入本地显示？ <br />
+答:Server端程序: 
+<pre class="brush:java">
+package test; 
+import java.net.*; 
+import java.io.*; 
+public class Server { 
+    private ServerSocket ss; 
+    private Socket socket; 
+    private BufferedReader in; 
+    private PrintWriter out; 
+    public Server() { 
+        try { 
+            ss=new ServerSocket(10000); 
+            while(true){
+                socket = ss.accept();
+                String RemoteIP = socket.getInetAddress().getHostAddress();
+                String RemotePort = ":"+socket.getLocalPort();
+                System.out.println("A client come in!IP:"+RemoteIP+RemotePort);
+                in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+                String line = in.readLine();
+                System.out.println("Cleint send is :" + line);
+                out = new PrintWriter(socket.getOutputStream(),true);
+                out.println("Your Message Received!");
+                out.close();
+                in.close();
+                socket.close();
+            }
+        }catch (IOException e) {
+            out.println("wrong");
+        }
+    }
+    public static void main(String[] args) {
+        new Server();
+    }
+}
+</pre>
+Client端程序：
+<pre class="brush:java">
+package test;
+import java.io.*;
+import java.net.*;
+public class Client {
+    Socket socket;
+    BufferedReader in;
+    PrintWriter out;
+    public Client() {
+        try{
+            System.out.println("Try to Connect to 127.0.0.1:10000");
+            socket = new Socket("127.0.0.1",10000);
+            System.out.println("The Server Connected!");
+            System.out.println("Please enter some Character:");
+            BufferedReader line = new BufferedReader(new InputStreamReader(System.in));
+            out = new PrintWriter(socket.getOutputStream(),true);
+            out.println(line.readLine());
+            in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+            System.out.println(in.readLine());
+            out.close();
+            in.close();
+            socket.close();
+        } catch(IOException e) {
+            out.println("Wrong");
+        }
+    }
+    public static void main(String[] args) {
+        new Client();
+    }
+}
+</pre>
+6、有一个已经排好序的数组。现输入一个数，要求按原来的规律将它插入数组中。<br />
+程序分析：首先判断此数是否大于最后一个数，然后再考虑插入中间的数的情况，插入后此元素之后的数，依次后移一个位置。
+<pre class="brush:java">
+package test;
+import java.util.ArrayList; import java.util.Scanner;
+public class Test6
+{
+    public static void main(String[] args)
+    {
+        int[] array={1,2,3,4,5,6,7,8,9};
+        ArrayList&lt;Integer> arrayList=new ArrayList&lt;Integer>();
+        Scanner sc=new Scanner(System.in);
+        int n;
+        System.out.println("请输入要插入的数");
+        n=sc.nextInt();
+        for(int i=0;i&lt;array.length;i++) {
+            arrayList.add(array[i]);
+        }
+        if(n&lt;arrayList.get(0)) {
+            arrayList.add(0,n);
+        }
+        for(int i=0;i&lt;arrayList.size()-1;i++) {
+            if(n>=arrayList.get(i)&&n&lt;=arrayList.get(i+1)) {
+                arrayList.add(i+1,n);
+                break;
+            }
+        }
+        if(n>arrayList.get(arrayList.size()-1)) {
+            arrayList.add(n);
+        }
+        System.out.println(arrayList);
+    }
+}
+</pre>
+</div>
+<div style="font-size:0.8em; text-align:right;">《21天学通Java》整理提供-2015.12.21</div>
+</div>
+</body>
+</html>

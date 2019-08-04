@@ -1,0 +1,137 @@
+﻿<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <title>Java面试题（二）</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <script src="Script/shCore.js" type="text/javascript"></script>
+    <script src="Script/shBrushJava.js" type="text/javascript"></script>
+    <link href="css/shCoreDefault.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript">
+        SyntaxHighlighter.all();
+    </script>
+    <style type="text/css">
+        .div
+        {
+            padding: 0 1%;
+        }
+    </style>
+</head>
+<body>
+<div style="width: 320px; background-color: #FFF; margin: 0 auto;">
+<div style="width: 100%; text-align: center; font-size: 1.1em;">Java 面试题（二）</div><br />
+<div class="div">
+31、EJB包括（SessionBean,EntityBean）说出他们的生命周期，及如何管理事务的？<br />
+SessionBean：Stateless Session Bean 的生命周期是由容器决定的，当客户机发出请求要建立一个Bean的实例时，EJB容器不一定要创建一个新的Bean的实例供客户机调用，而是随便找一个现有的实例提供给客户机。当客户机第一次调用一个Stateful Session Bean 时，容器必须立即在服务器中创建一个新的Bean实例，并关联到客户机上，以后此客户机调用Stateful Session Bean 的方法时容器会把调用分派到与此客户机相关联的Bean实例。<br />
+EntityBean：Entity Beans能存活相对较长的时间，并且状态是持续的。只要数据库中的数据存在，Entity beans就一直存活。而不是按照应用程序或者服务进程来说的。即使EJB容器崩溃了，Entity beans也是存活的。Entity Beans生命周期能够被容器或者 Beans自己管理。<br />
+EJB通过以下技术管理实务：对象管理组织（OMG）的对象实务服务（OTS），Sun Microsystems的Transaction Service（JTS）、Java Transaction API（JTA），开发组（X/Open）的XA接口。<br />
+32、应用服务器有那些？<br />
+BEA WebLogic Server，IBM WebSphere Application Server，Oracle9i Application Server，jBoss，Tomcat<br />
+33、给我一个你最常见到的runtime exception。<br />
+ArithmeticException, ArrayStoreException, BufferOverflowException, BufferUnderflowException, CannotRedoException, CannotUndoException, ClassCastException, CMMException, ConcurrentModificationException, DOMException, EmptyStackException, IllegalArgumentException, IllegalMonitorStateException, IllegalPathStateException, IllegalStateException, ImagingOpException, IndexOutOfBoundsException, MissingResourceException, NegativeArraySizeException, NoSuchElementException, NullPointerException, ProfileDataException, ProviderException, RasterFormatException, SecurityException, SystemException, UndeclaredThrowableException, UnmodifiableSetException, UnsupportedOperationException<br />
+34、接口是否可继承接口? 抽象类是否可实现(implements)接口? 抽象类是否可继承实体类(concrete class)?<br />
+接口可以继承接口。抽象类可以实现(implements)接口，抽象类是否可继承实体类，但前提是实体类必须有明确的构造函数。<br />
+35、List, Set, Map是否继承自Collection接口?<br />
+List，Set是，Map不是<br />
+36、说出数据连接池的工作机制是什么?<br />
+J2EE服务器启动时会建立一定数量的池连接，并一直维持不少于此数目的池连接。客户端程序需要连接时，池驱动程序会返回一个未使用的池连接并将其表记为忙。如果当前没有空闲连接，池驱动程序就新建一定数量的连接，新建连接的数量有配置参数决定。当使用的池连接调用完成后，池驱动程序将此连接表记为空闲，其他调用就可以使用这个连接。<br />
+37、abstract的method是否可同时是static,是否可同时是native，是否可同时是synchronized?<br />
+都不能<br />
+38、数组有没有length()这个方法? String有没有length()这个方法？<br />
+数组没有length()这个方法，有length的属性。String有有length()这个方法。<br />
+39、Set里的元素是不能重复的，那么用什么方法来区分重复与否呢? 是用==还是equals()? 它们有何区别?<br />
+Set里的元素是不能重复的，那么用iterator()方法来区分重复与否。equals()是判读两个Set是否相等。<br />
+equals()和==方法决定引用值是否指向同一对象equals()在类中被覆盖，为的是当两个分离的对象的内容和类型相配的话，返回真值。<br />
+40、构造器Constructor是否可被override?<br />
+构造器Constructor不能被继承，因此不能重写Overriding，但可以被重载Overloading。<br />
+41、是否可以继承String类?<br />
+String类是final类故不可以继承。<br />
+42、swtich是否能作用在byte上，是否能作用在long上，是否能作用在String上?<br />
+switch（expr1）中，expr1是一个整数表达式。因此传递给 switch 和 case 语句的参数应该是 int、 short、 char 或者 byte。long,string 都不能作用于swtich。<br />
+43、try {}里有一个return语句，那么紧跟在这个try后的finally {}里的code会不会被执行，什么时候被执行，在return前还是后?<br />
+会执行，在return前执行。<br />
+44、编程题: 用最有效率的方法算出2乘以8等於几? <br />
+2 << 3<br />
+45、两个对象值相同(x.equals(y) == true)，但却可有不同的hash code，这句话对不对?<br />
+不对，有相同的hash code。<br />
+46、当一个对象被当作参数传递到一个方法后，此方法可改变这个对象的属性，并可返回变化后的结果，那么这里到底是值传递还是引用传递? <br />
+是值传递。Java 编程语言只有值传递参数。当一个对象实例作为一个参数被传递到方法中时，参数的值就是对该对象的引用。对象的内容可以在被调用的方法中改变，但对象的引用是永远不会改变的。<br />
+47、当一个线程进入一个对象的一个synchronized方法后，其它线程是否可进入此对象的其它方法?<br />
+不能，一个对象的一个synchronized方法只能由一个线程访问。<br />
+48、编程题: 写一个Singleton出来。<br />
+Singleton模式主要作用是保证在Java应用程序中，一个类Class只有一个实例存在。<br />
+一般Singleton模式通常有几种种形式:<br />
+第一种形式: 定义一个类，它的构造函数为private的，它有一个static的private的该类变量，在类初始化时实例话，通过一个public的getInstance方法获取对它的引用,继而调用其中的方法。<br />
+<pre class="brush:java;">
+public class Singleton {
+    //在自己内部定义自己一个实例，是不是很奇怪？
+    private Singleton() {}
+　　//注意这是private 只供内部调用
+　　private static Singleton instance = new Singleton();
+　　//这里提供了一个供外部访问本class的静态方法，可以直接访问　　
+　　public static Singleton getInstance() {
+　　　　 return instance; 　　
+　　 } 
+ }
+</pre>
+第二种形式: 
+<pre class="brush:java;">
+public class Singleton { 
+　　private static Singleton instance = null;
+　　public static synchronized Singleton getInstance() {
+　　    //这个方法比上面有所改进，不用每次都进行生成对象，只是第一次　　　 　
+　　    //使用时生成实例，提高了效率！
+　　    if (instance==null)
+　　　　    instance＝new Singleton();
+        return instance;
+    }
+} 
+</pre>
+其他形式:<br />
+定义一个类，它的构造函数为private的，所有方法为static的。<br />
+一般认为第一种形式要更加安全些。<br />
+49、Java的接口和C++的虚类的相同和不同处。<br />
+由于Java不支持多继承，而有可能某个类或对象要使用分别在几个类或对象里面的方法或属性，现有的单继承机制就不能满足要求。与继承相比，接口有更高的灵活性，因为接口中没有任何实现代码。当一个类实现了接口以后，该类要实现接口里面所有的方法和属性，并且接口里面的属性在默认状态下面都是public static,所有方法默认情况下是public.一个类可以实现多个接口。<br />
+50、Java中的异常处理机制的简单原理和应用。<br />
+当JAVA程序违反了JAVA的语义规则时，JAVA虚拟机就会将发生的错误表示为一个异常。违反语义规则包括2种情况。一种是JAVA类库内置的语义检查。例如数组下标越界,会引发IndexOutOfBoundsException;访问null的对象时会引发NullPointerException。另一种情况就是JAVA允许程序员扩展这种语义检查，程序员可以创建自己的异常，并自由选择在何时用throw关键字引发异常。所有的异常都是java.lang.Thowable的子类。<br />
+51、垃圾回收的优点和原理。并考虑2种回收机制。<br />
+Java语言中一个显著的特点就是引入了垃圾回收机制，使c++程序员最头疼的内存管理的问题迎刃而解，它使得Java程序员在编写程序的时候不再需要考虑内存管理。由于有个垃圾回收机制，Java中的对象不再有“作用域”的概念，只有对象的引用才有“作用域”。垃圾回收可以有效的防止内存泄露，有效的使用可以使用的内存。垃圾回收器通常是作为一个单独的低级别的线程运行，不可预知的情况下对内存堆中已经死亡的或者长时间没有使用的对象进行清楚和回收，程序员不能实时的调用垃圾回收器对某个对象或所有对象进行垃圾回收。回收机制有分代复制垃圾回收和标记垃圾回收，增量垃圾回收。<br />
+52、请说出你所知道的线程同步的方法。<br />
+wait():使一个线程处于等待状态，并且释放所持有的对象的lock。<br />
+sleep():使一个正在运行的线程处于睡眠状态，是一个静态方法，调用此方法要捕捉InterruptedException异常。<br />
+notify():唤醒一个处于等待状态的线程，注意的是在调用此方法的时候，并不能确切的唤醒某一个等待状态的线程，而是由JVM确定唤醒哪个线程，而且不是按优先级。<br />
+Allnotity():唤醒所有处入等待状态的线程，注意并不是给所有唤醒线程一个对象的锁，而是让它们竞争。<br />
+53、你所知道的集合类都有哪些？主要方法？<br />
+最常用的集合类是 List 和 Map。 List 的具体实现包括 ArrayList 和 Vector，它们是可变大小的列表，比较适合构建、存储和操作任何类型对象的元素列表。 List 适用于按数值索引访问元素的情形。<br />
+Map 提供了一个更通用的元素存储方法。 Map 集合类用于存储元素对（称作“键”和“值”），其中每个键映射到一个值。<br />
+54、描述一下JVM加载class文件的原理机制?<br />
+JVM中类的装载是由ClassLoader和它的子类来实现的,Java ClassLoader 是一个重要的Java运行时系统组件。它负责在运行时查找和装入类文件的类。<br />
+55、char型变量中能不能存贮一个中文汉字?为什么? <br />
+能够定义成为一个中文的，因为java中以unicode编码，一个char占16个字节，所以放一个中文是没问题的。<br />
+56、多线程有几种实现方法,都是什么?同步有几种实现方法,都是什么? <br />
+多线程有两种实现方法，分别是继承Thread类与实现Runnable接口。<br />
+同步的实现方面有两种，分别是synchronized,wait与notify。<br />
+57、JSP的内置对象及方法。<br />
+request表示HttpServletRequest对象。它包含了有关浏览器请求的信息，并且提供了几个用于获取cookie, header, 和session数据的有用的方法。<br />
+response表示HttpServletResponse对象，并提供了几个用于设置送回 浏览器的响应的方法（如cookies,头信息等） <br />
+out对象是javax.jsp.JspWriter的一个实例，并提供了几个方法使你能用于向浏览器回送输出结果。<br />
+pageContext表示一个javax.servlet.jsp.PageContext对象。它是用于方便存取各种范围的名字空间、servlet相关的对象的API，并且包装了通用的servlet相关功能的方法。<br /> 
+session表示一个请求的javax.servlet.http.HttpSession对象。Session可以存贮用户的状态信息 <br />
+applicaton 表示一个javax.servle.ServletContext对象。这有助于查找有关servlet引擎和servlet环境的信息<br />
+config表示一个javax.servlet.ServletConfig对象。该对象用于存取servlet实例的初始化参数。<br />
+page表示从该页面产生的一个servlet实例<br />
+58、线程的基本概念、线程的基本状态以及状态之间的关系<br />
+线程指在程序执行过程中，能够执行程序代码的一个执行单位，每个程序至少都有一个线程，也就是程序本身。<br />
+Java中的线程有四种状态分别是：运行、就绪、挂起、结束。<br />
+59、JSP的常用指令<br />
+&lt;%@ Page autoFlush="true" buffer="64kb" contenType="text/html;charset=gb2312" errorPage="error.jsp" import="java.sql.*" info="text" isELIgnored="true" isErrorPage="true" isThreadSafe="true" language="java" pageEncoding="gb2312" session="true" %><br />
+isErrorPage(是否能使用Exception对象)，isELIgnored(是否忽略表达式) <br />
+60、什么情况下调用doGet()和doPost()？<br />
+Jsp页面中的form标签里的method属性为get时调用doGet()，为post时调用doPost()。<br />
+61、servlet的生命周期<br />
+web容器加载servlet，生命周期开始。通过调用servlet的init()方法进行servlet的初始化。通过调用service()方法实现，根据请求的不同调用不同的do***()方法。结束服务，web容器调用servlet的destroy()方法。<br />
+</div>
+<div style="font-size:0.8em; text-align:right;">《21天学通Java》整理提供-2015.12.18</div>
+</div>
+</body>
+</html>

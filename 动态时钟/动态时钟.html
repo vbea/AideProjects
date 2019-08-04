@@ -1,0 +1,122 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <title>动态时钟</title>
+  <meta name="generator" content="editplus" />
+  <meta name="author" content="" />
+  <meta name="keywords" content="" />
+  <meta name="description" content="" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+ <bgsound src="music/bgsound.mp3" loop="-1" />
+</head>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+setInterval("clock()",50)
+function clock()
+{
+	var aTime = new Date()
+	var hour = aTime.getHours();
+	var mini = aTime.getMinutes();
+	var sec = aTime.getSeconds();
+	//var time = ""+hour+":"+mini+":"+sec;
+	//document.getElementById("clock").innerHTML=time;
+	//1.0版本
+	//if(hour < 10)
+//	{
+//		document.getElementById("h1").src="images/0.png"
+//		document.getElementById("h2").src="images/"+hour+".png"
+//	}
+//	else if(hour >= 10 && hour < 20)
+//	{
+//		document.getElementById("h1").src="images/1.png"
+//		document.getElementById("h2").src="images/"+(hour-10)+".png"
+//	}
+//	else if(hour >= 20)
+//	{
+//		document.getElementById("h1").src="images/2.png"
+//		document.getElementById("h2").src="images/"+(hour-20)+".png"
+//	}
+//	if(mini < 10)
+//	{
+//		document.getElementById("m1").src="images/0.png"
+//		document.getElementById("m2").src="images/"+mini+".png"
+//	}
+//	else if(mini >= 10 && mini < 20)
+//	{
+//		document.getElementById("m1").src="images/1.png"
+//		document.getElementById("m2").src="images/"+(mini-10)+".png"
+//	}
+//	else if(mini >= 20 && mini < 30)
+//	{
+//		document.getElementById("m1").src="images/2.png"
+//		document.getElementById("m2").src="images/"+(mini-20)+".png"
+//	}
+//	else if(mini >= 30 && mini < 40)
+//	{
+//		document.getElementById("m1").src="images/3.png"
+//		document.getElementById("m2").src="images/"+(mini-30)+".png"
+//	}
+//	else if(mini >= 40 && mini < 50)
+//	{
+//		document.getElementById("m1").src="images/4.png"
+//		document.getElementById("m2").src="images/"+(mini-40)+".png"
+//	}
+//	else if(mini >= 50 && mini < 60)
+//	{
+//		document.getElementById("m1").src="images/5.png"
+//		document.getElementById("m2").src="images/"+(mini-50)+".png"
+//	}
+//	if(sec < 10)
+//	{
+//		document.getElementById("s1").src="images/0.png"
+//		document.getElementById("s2").src="images/"+sec+".png"
+//	}
+//	else if(sec >= 10 && sec < 20)
+//	{
+//		document.getElementById("s1").src="images/1.png"
+//		document.getElementById("s2").src="images/"+(sec-10)+".png"
+//	}
+//	else if(sec >= 20 && sec < 30)
+//	{
+//		document.getElementById("s1").src="images/2.png"
+//		document.getElementById("s2").src="images/"+(sec-20)+".png"
+//	}
+//	else if(sec >= 30 && sec < 40)
+//	{
+//		document.getElementById("s1").src="images/3.png"
+//		document.getElementById("s2").src="images/"+(sec-30)+".png"
+//	}
+//	else if(sec >= 40 && sec < 50)
+//	{
+//		document.getElementById("s1").src="images/4.png"
+//		document.getElementById("s2").src="images/"+(sec-40)+".png"
+//	}
+//	else if(sec >= 50 && sec < 60)
+//	{
+//		document.getElementById("s1").src="images/5.png"
+//		document.getElementById("s2").src="images/"+(sec-50)+".png"
+//	}
+//2.0版本
+	var h01 = parseInt(hour / 10);
+	var h02 = hour % 10;
+	document.getElementById("h1").src="images/"+h01+".png"
+	document.getElementById("h2").src="images/"+h02+".png"
+	var m01 = parseInt(mini / 10);
+	var m02 = mini % 10;
+	document.getElementById("m1").src="images/"+m01+".png"
+	document.getElementById("m2").src="images/"+m02+".png"
+	var s01 = parseInt(sec / 10);
+	var s02 = sec % 10;
+	document.getElementById("s1").src="images/"+s01+".png"
+	document.getElementById("s2").src="images/"+s02+".png"
+}
+
+//-->
+</SCRIPT>
+ <body style="background:url(images/bg.jpg)">
+<div align="center"> <img src="images/t0266e68d991cd3c4ec.gif" width="322" height="92" alt="" /></div>
+ <div style="border:1px red solid; float:none; text-align:center; margin:50px; margin-top:10px">
+ <!--font color="red" style="text-align:inherit">当前时间：</font--><img id="h1" /><img id="h2" /><img src="images/time.png" /><img id="m1" /><img id="m2" /><img src="images/time.png" /><img id="s1" /><img id="s2" /></div>
+ </body>
+<!--made by 邠心工作室(vbea@foxmail.com)-->
+</html>
