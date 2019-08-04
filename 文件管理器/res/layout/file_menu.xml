@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:orientation="vertical"
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content">
+	<TextView
+		android:background="@drawable/ui_menu_bg"
+		android:layout_width="wrap_content"
+		android:layout_height="0dp"/>
+	<ScrollView
+		android:layout_width="fill_parent"
+		android:layout_height="fill_parent"
+		android:paddingLeft="18dp">
+
+		<LinearLayout
+			android:id="@+id/file_optChildView"
+			android:layout_height="fill_parent"
+			android:layout_width="fill_parent"
+			android:orientation="vertical"
+			android:paddingRight="2dp"
+			android:paddingTop="2dp">
+			<Button
+				android:id="@+id/file_optNewFolder"
+				android:layout_width="fill_parent"
+				android:text="@string/newfolder"
+				android:layout_height="40dp"
+				android:paddingLeft="20dp"
+				android:paddingRight="0dp"
+				android:background="@drawable/ui_btn_menu_bg"
+				android:textSize="18sp"
+				android:textColor="@color/btn_text_colors"
+				android:textAllCaps="false"
+				android:textStyle="normal"
+				android:gravity="left|center_vertical"/>
+
+			<TextView
+				android:layout_width="fill_parent"
+				android:layout_height="1dp"
+				android:background="#EEdddddd"/>
+
+			<Button
+				android:id="@+id/file_optNewFile"
+				android:layout_width="fill_parent"
+				android:text="@string/newfile"
+				android:layout_height="40dp"
+				android:paddingLeft="20dp"
+				android:paddingRight="0dp"
+				android:background="@drawable/ui_btn_menu_bg"
+				android:textSize="18sp"
+				android:textColor="@color/btn_text_colors"
+				android:textAllCaps="false"
+				android:textStyle="normal"
+				android:gravity="left|center_vertical"/>
+
+			<TextView
+				android:layout_width="fill_parent"
+				android:layout_height="1dp"
+				android:background="#EEdddddd"/>
+
+			<Button
+				android:id="@+id/file_optRefresh"
+				android:layout_width="fill_parent"
+				android:text="@string/refresh"
+				android:layout_height="40dp"
+				android:background="@drawable/ui_btn_menu_bg"
+				android:textSize="18sp"
+				android:textColor="@color/btn_text_colors"
+				android:paddingLeft="20dp"
+				android:paddingRight="0dp"
+				android:textAllCaps="false"
+				android:textStyle="normal"
+				android:gravity="left|center_vertical"/>
+
+			<TextView
+				android:layout_width="fill_parent"
+				android:layout_height="1dp"
+				android:background="#EEdddddd"/>
+			<Button
+				android:id="@+id/file_optHome"
+				android:layout_width="fill_parent"
+				android:text="@string/home"
+				android:layout_height="40dp"
+				android:background="@drawable/ui_btn_menu_bg"
+				android:textSize="18sp"
+				android:textColor="@color/btn_text_colors"
+				android:paddingLeft="20dp"
+				android:paddingRight="0dp"
+				android:textAllCaps="false"
+				android:textStyle="normal"
+				android:gravity="left|center_vertical"/>
+
+			<TextView
+				android:layout_width="fill_parent"
+				android:layout_height="1dp"
+				android:background="#EEdddddd"/>
+			<Button
+				android:id="@+id/file_optSDcard"
+				android:layout_width="fill_parent"
+				android:text="@string/sdcard"
+				android:layout_height="40dp"
+				android:background="@drawable/ui_btn_menu_bg"
+				android:textSize="18sp"
+				android:textColor="@color/btn_text_colors"
+				android:paddingLeft="20dp"
+				android:paddingRight="0dp"
+				android:textAllCaps="false"
+				android:textStyle="normal"
+				android:gravity="left|center_vertical"/>
+
+			<TextView
+				android:layout_width="fill_parent"
+				android:layout_height="1dp"
+				android:background="#EEdddddd"/>
+			<Button
+				android:id="@+id/file_optStore"
+				android:layout_width="fill_parent"
+				android:text="@string/store"
+				android:layout_height="40dp"
+				android:background="@drawable/ui_btn_menu_bg"
+				android:textSize="18sp"
+				android:textColor="@color/btn_text_colors"
+				android:paddingLeft="20dp"
+				android:paddingRight="0dp"
+				android:textAllCaps="false"
+				android:textStyle="normal"
+				android:gravity="left|center_vertical"/>
+
+			<TextView
+				android:layout_width="fill_parent"
+				android:layout_height="1dp"
+				android:background="#EEdddddd"/>
+			<Button
+				android:id="@+id/file_optSetting"
+				android:layout_width="fill_parent"
+				android:text="@string/setting"
+				android:layout_height="40dp"
+				android:background="@drawable/ui_btn_menu_bg"
+				android:textSize="18sp"
+				android:textColor="@color/btn_text_colors"
+				android:paddingLeft="20dp"
+				android:paddingRight="0dp"
+				android:textAllCaps="false"
+				android:textStyle="normal"
+				android:gravity="left|center_vertical"/>
+			
+			<TextView
+				android:layout_width="fill_parent"
+				android:layout_height="1dp"
+				android:background="#EEdddddd"/>
+			<Button
+				android:id="@+id/file_optExit"
+				android:layout_width="fill_parent"
+				android:text="@string/exit"
+				android:layout_height="40dp"
+				android:background="@drawable/ui_btn_menu_bg"
+				android:textSize="18sp"
+				android:paddingLeft="20dp"
+				android:paddingRight="0dp"
+				android:gravity="left|center_vertical"
+				android:textAllCaps="false"
+				android:textStyle="normal"
+				android:textColor="@color/btn_text_colors"/>
+			<TextView
+				android:layout_width="fill_parent"
+				android:layout_height="1dp"
+				android:background="#EFefefef"/>
+
+		</LinearLayout>
+
+	</ScrollView>
+
+</LinearLayout>
+

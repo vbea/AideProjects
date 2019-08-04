@@ -1,0 +1,320 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><link rel="stylesheet" type="text/css" href="markdown.css"></link></head><body>
+</body></html><h1>授权与登录 详细集成</h1>
+<p><input name="pinList" type="hidden" value="1"/></p>
+<ul>
+<li>1.<a href="#integration_user_center">集成用户中心</a><ul>
+<li><a href="#add_controller">添加成员变量</a></li>
+<li><a href="#open_user_center">打开用户中心</a></li>
+<li><a href="#result">验证结果</a></li>
+</ul>
+</li>
+<li>2.<a href="#oauth">授权</a><ul>
+<li><a href="#auth_interface">授权接口</a></li>
+<li><a href="#sso_auth">添加SSO授权</a></li>
+<li><a href="#sina_sso_auth">新浪SSO授权</a></li>
+<li><a href="#tencent_sso_auth">腾讯微博SSO授权</a></li>
+<li><a href="#qzone_sso_auth">QQ空间SSO授权</a></li>
+</ul>
+</li>
+<li>3.<a href="#obtain_user_info">获取用户信息</a></li>
+<li>4.<a href="#platform_jar_map">平台jar文件对应列表</a></li>
+<li>5.<a href="#platform_register_address">应用信息注册地址列表</a></li>
+<li>6.<a href="#proguard">混淆</a></li>
+</ul>
+<p><b id=integration_user_center></b></p>
+<h2>1 集成用户中心</h2>
+<p><b id=add_controller></b></p>
+<h3>1.1 首先在您的Activity中添加如下成员变量</h3>
+<pre><code class="java">UMSocialService mController = UMServiceFactory.getUMSocialService(&quot;com.umeng.login&quot;);
+</code></pre>
+
+<p><b id=open_user_center></b></p>
+<h3>1.2在Activity中添加如下代码</h3>
+<pre><code class="java">mController.openUserCenter(MainActivity.this，SocializeConstants.FLAG_USER_CENTER_HIDE_LOGININFO)；
+</code></pre>
+
+<p><b id=result></b></p>
+<h3>1.3 验证结果</h3>
+<p>上半部分是友盟帐号的登录状态信息，如果没有登录将显示登录按钮，下半部分是各个平台的授权状态，可对单个平台进行授权和解授权操作。</p>
+<table>
+<thead>
+<tr>
+<th align="center"></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center"><img src="http://dev.umeng.com/images/android/ucenter.png" width="240" height="400"></td>
+</tr>
+<tr>
+<td align="center">用户中心效果</td>
+</tr>
+</tbody>
+</table>
+<p><strong>接口说明</strong></p>
+<ul>
+<li>UMSocialService.openUserCenter(final Context context, int... flag)</li>
+</ul>
+<p><strong>flag取值及其说明:</strong></p>
+<table>
+<thead>
+<tr>
+<th align="center">FLAG</th>
+<th align="center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">SocializeConstants.FLAG_USER_CENTER_LOGIN_VERIFY</td>
+<td align="center">必须是已登录用户才能打开用户中心，否则将先要求登录</td>
+</tr>
+<tr>
+<td align="center">SocializeConstants.FLAG_USER_CENTER_HIDE_LOGININFO</td>
+<td align="center">不显示用户中心页登录信息区域</td>
+</tr>
+<tr>
+<td align="center">SocializeConstants.FLAG_USER_CENTER_HIDE_SNSINFO</td>
+<td align="center">不显示用户中心平台授权状态设置区域</td>
+</tr>
+</tbody>
+</table>
+<p><strong>flag使用说明</strong></p>
+<p><em>场景一：只显示授权区域</em></p>
+<pre><code class="java">mController.openUserCenter(MainActivity.this,SocializeConstants.FLAG_USER_CENTER_HIDE_LOGININFO);
+</code></pre>
+
+<p><em>场景二：只显示登录区域，并且只有登录用户才能打开用户中心</em></p>
+<pre><code class="java">int flag = SocializeConstants.FLAG_USER_CENTER_LOGIN_VERIFY
+                                     | SocializeConstants.FLAG_USER_CENTER_HIDE_LOGININFO;
+mController.openUserCenter(MainActivity.this , flag);
+</code></pre>
+
+<p><b id=oauth></b></p>
+<h2>2 授权</h2>
+<p><b id=auth_interface></b>
+授权接口     </p>
+<pre><code class="java">UMSocialService.doOauthVerify(Context context , SHARE_MEDIA platform , UMAuthListener listener)    
+</code></pre>
+
+<p>接口说明：该接口调用将调出授权页进行授权操作。该接口不支持twitter，G+，易信，来往授权。 </p>
+<pre><code class="java">mController.doOauthVerify(MainActivity.this, SHARE_MEDIA.SINA,new UMAuthListener() {
+            @Override
+            public void onError(SocializeException e, SHARE_MEDIA platform) {
+            }
+            @Override
+            public void onComplete(Bundle value, SHARE_MEDIA platform) {
+                if (value != null &amp;&amp; !TextUtils.isEmpty(value.getString(&quot;uid&quot;))) {
+                    Toast.makeText(MainActivity.this, &quot;授权成功.&quot;,                      Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(MainActivity.this, &quot;授权失败&quot;,                       Toast.LENGTH_SHORT).show();
+                }
+            }
+            @Override
+            public void onCancel(SHARE_MEDIA platform) {}
+            @Override
+            public void onStart(SHARE_MEDIA platform) {}
+});
+</code></pre>
+
+<p><b id=sso_auth></b></p>
+<h3>SSO授权</h3>
+<p>如果有使用任一平台的SSO授权, 则必须在对应的activity中实现onActivityResult方法, 并添加如下代码   </p>
+<pre><code class="java">@Override
+protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+    super.onActivityResult(requestCode, resultCode, data);
+    /**使用SSO授权必须添加如下代码 */  
+    UMSsoHandler ssoHandler = mController.getConfig().getSsoHandler(requestCode);
+    if(ssoHandler != null){
+       ssoHandler.authorizeCallBack(requestCode, resultCode, data);
+    }
+}
+</code></pre>
+
+<p><b id=sina_sso_auth></b></p>
+<h4>添加新浪微博SSO功能</h4>
+<p>1.确认工程src目录已添加'com/sina/sso/RemoteSSO.aidl'，如果没有请将SDK包中src覆盖到项目工程。</p>
+<p>2.配置sina SSO(免登录)并打开分享平台页面</p>
+<pre><code class="java">//设置新浪SSO handler
+mController.getConfig().setSsoHandler(new SinaSsoHandler());
+</code></pre>
+
+<p>添加后授权新浪微博将优先执行Sso授权，如果Sso授权失败（如没安装新浪微博）,将启动网页版授权方式授权。</p>
+<p>授权并关注官方微博（只支持传统Wap页授权，不支持SSO授权）</p>
+<pre><code class="java">SocializeConfig config = mController.getConfig();
+//添加关注对象(平台，关注用户的uid)
+config.addFollow(SHARE_MEDIA.SINA, &quot;1914100420&quot;);
+//添加follow 时的回调
+config.setOauthDialogFollowListener(new MulStatusListener() {
+    @Override
+    public void onStart() {
+        Log.d(&quot;TestData&quot;, &quot;Follow Start&quot;);
+    }
+
+    @Override
+    public void onComplete(MultiStatus multiStatus, int st, SocializeEntity entity) {
+        if(st == 200){//follow 成功
+            //TODO do something
+        }
+    }
+});
+</code></pre>
+
+<p><b id=tencent_sso_auth></b></p>
+<h3>添加腾讯微博SSO功能</h3>
+<p>添加腾讯微博SSO（免登录）</p>
+<pre><code class="java">mController.getConfig().setSsoHandler(new TencentWBSsoHandler());
+</code></pre>
+
+<p><b id=qzone_sso_auth></b></p>
+<h3>添加QQ空间SSO功能</h3>
+<p>1、在集成代码中添加如下代码     </p>
+<pre><code class="java">//为了避免每次都从服务器获取APP ID、APP KEY，请设置APP ID跟APP KEY
+mController.getConfig().setSsoHandler( new QZoneSsoHandler(Activity activity, &quot;APP ID&quot;, &quot;APP KEY&quot;) );
+</code></pre>
+
+<p><b id=obtain_user_info></b></p>
+<h2>3 获取用户信息</h2>
+<p><strong>获取用户授权后的信息</strong>   </p>
+<pre><code class="java">UMSocialService.getPlatformInfo(Context context , SHARE_MEDIA platform , UMDataListener listener)     
+</code></pre>
+
+<p>接口说明：获取已授权平台的用户信息，accesstoken等信息。该接口不支持微信，微信朋友圈，Facebook，twitter，G+，易信，来往。        </p>
+<pre><code class="java">mController.getPlatformInfo(MainActivity.this, SHARE_MEDIA.SINA, new UMDataListener() {
+    @Override
+    public void onStart() {
+        Toast.makeText(MainActivity.this, &quot;获取平台数据开始...&quot;, Toast.LENGTH_SHORT).show();
+    }                                              
+    @Override
+        public void onComplete(int status, Map&lt;String, Object&gt; info) {
+            if(status == 200 &amp;&amp; info != null){
+                StringBuilder sb = new StringBuilder();
+                Set&lt;String&gt; keys = info.keySet();
+                for(String key : keys){
+                   sb.append(key+&quot;=&quot;+info.get(key).toString()+&quot;\r\n&quot;);
+                }
+                Log.d(&quot;TestData&quot;,sb.toString());
+            }else{
+               Log.d(&quot;TestData&quot;,&quot;发生错误：&quot;+status);
+           }
+        }
+});
+</code></pre>
+
+<p><b id=platform_jar_map></b></p>
+<h2>4 平台jar文件对应列表</h2>
+<table>
+<thead>
+<tr>
+<th align="center">平台</th>
+<th align="center">jar文件</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">腾讯微博</td>
+<td align="center">SocialSDK_TencentWB_1.jar,SocialSDK_TencentWB_2.jar</td>
+</tr>
+<tr>
+<td align="center">QQ空间</td>
+<td align="center">SocialSDK_QQZone_1.jar,SocialSDK_QQZone_2.jar,SocialSDK_QQZone_3.jar</td>
+</tr>
+<tr>
+<td align="center">微信好友</td>
+<td align="center">SocialSDK_WeiXin.jar</td>
+</tr>
+<tr>
+<td align="center">QQ</td>
+<td align="center">SocialSDK_QQZone_1.jar,SocialSDK_QQZone_2.jar,SocialSDK_QQZone_3.jar</td>
+</tr>
+</tbody>
+</table>
+<p><b id=platform_register_address></p>
+<h2>5 应用信息注册地址列表</h2>
+<p>下面是Social SDK不同平台应用信息注册网站的地址:  </p>
+<table>
+<thead>
+<tr>
+<th align="center">平台</th>
+<th align="center">网址</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">新浪微博</td>
+<td align="center">http://open.weibo.com</td>
+</tr>
+<tr>
+<td align="center">腾讯微博</td>
+<td align="center">http://dev.t.qq.com</td>
+</tr>
+<tr>
+<td align="center">QQ空间</td>
+<td align="center">http://connect.qq.com/intro/login/</td>
+</tr>
+<tr>
+<td align="center">微信好友</td>
+<td align="center">http://open.weixin.qq.com</td>
+</tr>
+<tr>
+<td align="center">FaceBook</td>
+<td align="center">https://developers.facebook.com</td>
+</tr>
+<tr>
+<td align="center">Twitter</td>
+<td align="center">https://dev.twitter.com</td>
+</tr>
+<tr>
+<td align="center">人人</td>
+<td align="center">http://dev.renren.com</td>
+</tr>
+<tr>
+<td align="center">豆瓣</td>
+<td align="center">http://developers.douban.com/</td>
+</tr>
+</tbody>
+</table>
+<p><b id=proguard></b></p>
+<h2>6 混淆</h2>
+<p>为了保证引用友盟Social SDK jar文件以及腾讯jar文件被混淆，请在proguard.cfg文件中添加以下代码避免被混淆.  </p>
+<pre><code class="text">
+-dontshrink
+-dontoptimize
+-dontwarn com.google.android.maps.**
+-dontwarn android.webkit.WebView
+-dontwarn com.umeng.**
+-dontwarn com.tencent.weibo.sdk.**
+-dontwarn com.facebook.**
+
+-libraryjars libs/SocialSDK_QQZone_2.jar
+
+-keep enum com.facebook.**
+-keepattributes Exceptions,InnerClasses,Signature
+-keepattributes *Annotation*
+-keepattributes SourceFile,LineNumberTable
+
+-keep public interface com.facebook.**
+-keep public interface com.tencent.**
+-keep public interface com.umeng.socialize.**
+-keep public interface com.umeng.socialize.sensor.**
+-keep public interface com.umeng.scrshot.**
+
+-keep public class com.umeng.socialize.* {*;}
+-keep public class javax.**
+-keep public class android.webkit.**
+
+-keep class com.facebook.**
+-keep class com.umeng.scrshot.**
+-keep public class com.tencent.** {*;}
+-keep class com.umeng.socialize.sensor.**
+
+-keep class com.tencent.mm.sdk.modelmsg.WXMediaMessage {*;}
+
+-keep class com.tencent.mm.sdk.modelmsg.** implements com.tencent.mm.sdk.modelmsg.WXMediaMessage$IMediaObject {*;}
+
+-keep class im.yixin.sdk.api.YXMessage {*;}
+-keep class im.yixin.sdk.api.** implements im.yixin.sdk.api.YXMessage$YXMessageData{*;}
+
+-keep public class [your_pkg].R$*{
+    public static final int *;
+}
+</code></pre></body></html>

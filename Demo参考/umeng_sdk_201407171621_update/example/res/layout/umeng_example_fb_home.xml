@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.umeng.ui.widget.DashboardLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#FFFFFFFF" >
+
+    <Button
+        android:id="@+id/umeng_example_fb_home_btn_simple"
+        style="@style/DashboardButton"
+        android:text="@string/umeng_example_fb_home_btn_simple" />
+    
+</com.umeng.ui.widget.DashboardLayout>

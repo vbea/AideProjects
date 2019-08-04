@@ -1,0 +1,613 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><link rel="stylesheet" type="text/css" href="markdown.css"></link></head><body>
+</body></html><h1>分享快速集成</h1>
+<p><input name="pinList" type="hidden" value="1"/></p>
+<ul>
+<li>1.<a href="#product_info">产品概述</a></li>
+<li>2.<a href="#sign_in_umengkey">获取友盟AppKey</a></li>
+<li>3.<a href="#download_integration">下载并安装SDK</a></li>
+<li>4.<a href="#open_shareboard">打开平台选择页面</a><ul>
+<li><a href="#set_share_content">设置分享内容</a></li>
+<li><a href="#open_board">打开面板</a></li>
+</ul>
+</li>
+<li>5.<a href="#social_success">验证结果</a></li>
+<li>6.<a href="#social_sso">各平台SSO(免登陆)配置</a> <ul>
+<li><a href="#social_callback">配置SSO授权回调</a></li>
+<li><a href="#social_weixin">分享到微信和朋友圈</a></li>
+<li><a href="#social_qq_sso">分享给QQ好友</a></li>
+<li><a href="#social_qzone_sso">SSO（免登录）分享到QQ空间</a></li>
+<li><a href="#social_sina_sso">SSO（免登录）分享到新浪微博</a></li>
+<li><a href="#social_tencent_sso">SSO（免登录）分享到腾讯微博</a></li>
+<li><a href="#social_renren_sso">SSO（免登录）分享到人人网</a></li>
+<li><a href="#social_sms">分享到短信</a></li>
+<li><a href="#social_email">分享到邮件</a></li>
+</ul>
+</li>
+<li>7.<a href="#platform_register_address">应用信息注册地址列表</a></li>
+<li>8.<a href="#proguard">混淆</a></li>
+<li>9.<a href="#detail_integration">进阶使用</a></li>
+</ul>
+<p><b id=product_info></b></p>
+<h1>1 产品概述</h1>
+<p>友盟社会化组件，可以让移动应用快速具备社会化分享、登录、评论、喜欢等功能，并提供实时、全面的社会化数据统计分析服务。</p>
+<p>指南将会手把手教你使用社会化组件SDK，用5分钟为APP增加新浪微博、腾讯微博、人人网分享功能。</p>
+<p><font color="red">注意：本文示例代码均针对最新版SDK，如果你所用SDK的类名或方法名与此文不符合，请使用你所用SDK的随包文档、或者下载使用最新版SDK。</font></p>
+<p><b id="sign_in_umengkey"></b></p>
+<h1>2 获取友盟Appkey</h1>
+<p>如果你之前已经在友盟注册了应用，并获取到了Appkey，可以继续使用它.</p>
+<p>如果你尚未在友盟注册开发者账号，需要先[注册] (http://www.umeng.com/users/sign_up)，注册之后登录你的账号，点击<strong>添加新应用</strong>，填写完应用基本信息后，将进入"下载SDK并添加代码"页面，此页面即可得到<code>Appkey</code>。</p>
+<p><b id=download_integration></b></p>
+<h1>3 下载并安装SDK</h1>
+<h2><strong>3.1 下载[SDK最新版] (http://dev.umeng.com/social/android/sdk-download)</strong></h2>
+<h2><strong>3.2 添加代码和资源引用</strong></h2>
+<p>jar文件对应列表   </p>
+<table>
+<thead>
+<tr>
+<th align="center">平台</th>
+<th align="center">jar文件</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">腾讯微博</td>
+<td align="center">SocialSDK_TencentWB_1.jar,SocialSDK_TencentWB_2.jar</td>
+</tr>
+<tr>
+<td align="center">QQ空间</td>
+<td align="center">SocialSDK_QQZone_1.jar,SocialSDK_QQZone_2.jar,SocialSDK_QQZone_3.jar</td>
+</tr>
+<tr>
+<td align="center">微信好友</td>
+<td align="center">SocialSDK_WeiXin_1.jar,SocialSDK_WeiXin_2.jar</td>
+</tr>
+<tr>
+<td align="center">QQ</td>
+<td align="center">SocialSDK_QQZone_1.jar,SocialSDK_QQZone_2.jar,SocialSDK_QQZone_3.jar</td>
+</tr>
+<tr>
+<td align="center"><strong>注意</strong></td>
+<td align="center"></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>1：QQ和QQ Zone SSO（免登录）引用的jar文件相同。当需要同时支持QQ和QQ Zone的时候，只需添加一次SocialSDK_QQZone_1.jar,SocialSDK_QQZone_2.jar文件即可.<br />
+2：由于我们对微信的包名做了修改（libammsdk.jar -&gt; SocialSDK_WeiXin.jar）,如出现"Unable to execute dex: Multiple dex files define "问题,请删除libammsdk.jar或者SocialSDK_WeiXin.jar中的一个即可解决问题。</p>
+</blockquote>
+<h3>添加资源文件和jar文件有三种方式，请根据您的需求进行选择</h3>
+<h3>方法A：快速集成工具 ( 推荐 )</h3>
+<p>1：解压SDK下载包，双击运行SDK根目录下的SDKIntegration.jar或者在命令行下输入java -jar SDKIntegration.jar运行集成工具；  <br />
+2：选择Android工程的根目录，并且填写您的友盟App Key；  <br />
+3：勾选所需平台和组件，点击"快速集成";  <br />
+4：检查AndroidManifest.xml、jar文件是否正确。如果集成了QQ或者QZone，请修改相应地appid。如下图所示:              </p>
+<p><img src="http://dev.umeng.com/system/images/W1siZiIsIjIwMTQvMDYvMjcvMTVfNDdfMTBfNjEwX3Nka190b29scy5wbmciXV0/sdk_tools.png" width="600" height="398" > </p>
+<h3>方法B：添加工程引用（升级方便，推荐）</h3>
+<p>解压SDK压缩包，将文件夹中的social_sdk_library_project文件夹导入Eclipse，并在您的工程中添加对此项目的引用即可。</p>
+<h3>方法C：添加资源到现有项目中</h3>
+<p>解压SDK压缩包，将文件夹中的'main/libs'和'main/res'文件夹复制到你的项目工程根目录下（如使用'ADT 17'以下用户需要手动添加'libs'下的jar文件到工程Path中）：</p>
+<table>
+<thead>
+<tr>
+<th align="center"></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center"><img src="http://dev.umeng.com/system/images/W1siZiIsIjIwMTQvMDYvMTEvMTRfMjlfNTlfMzU2X3NvY2lhbF9hbmRyb2lkX3Nka19xdWlja19ndWlkZS5qcGciXV0/social_android_sdk_quick_guide.jpg" width="600" height="400"></td>
+</tr>
+<tr>
+<td align="center">SDK压缩包目录</td>
+</tr>
+</tbody>
+</table>
+<p><b id=social_appkey></b></p>
+<h2><strong>3.3 Manifest配置，添加友盟Appkey/Activity/权限</strong></h2>
+<pre><code class="xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;manifest xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
+    package=&quot;com.umeng.example&quot;
+    android:versionCode=&quot;1&quot;
+    android:versionName=&quot;1.0&quot; &gt;
+
+    &lt;application
+        android:debuggable=&quot;true&quot;
+        android:icon=&quot;@drawable/icon&quot;
+        android:label=&quot;@string/app_name&quot;
+        android:theme=&quot;@android:style/Theme.Black.NoTitleBar&quot; &gt;
+
+        &lt;!-- ###################注册SDK使用的Activity###################### --&gt;
+        &lt;!--分享编辑页--&gt;
+        &lt;activity
+            android:name=&quot;com.umeng.socialize.view.ShareActivity&quot;
+            android:configChanges=&quot;orientation|keyboard&quot;
+            android:launchMode=&quot;singleTask&quot;
+            android:noHistory=&quot;true&quot;
+            android:theme=&quot;@style/Theme.UMDialog&quot;
+            android:windowSoftInputMode=&quot;stateVisible|adjustResize&quot; &gt;
+        &lt;/activity&gt;
+
+        &lt;!-- ############ QQ空间和QQ SSO授权的Activity注册 ############ --&gt;
+        &lt;activity
+            android:name=&quot;com.tencent.tauth.AuthActivity&quot;
+            android:launchMode=&quot;singleTask&quot;
+            android:noHistory=&quot;true&quot; &gt;
+            &lt;intent-filter&gt;
+                &lt;action android:name=&quot;android.intent.action.VIEW&quot; /&gt;
+
+                &lt;category android:name=&quot;android.intent.category.DEFAULT&quot; /&gt;
+                &lt;category android:name=&quot;android.intent.category.BROWSABLE&quot; /&gt;
+                &lt;!-- 100424468，如果你使用的公用账号，则不需要修改；否则修改成你在QQ开放平台申请的 APP ID--&gt;
+                &lt;data android:scheme=&quot;tencent100424468&quot; /&gt; 
+            &lt;/intent-filter&gt;
+        &lt;/activity&gt;
+        &lt;activity android:name=&quot;com.tencent.connect.common.AssistActivity&quot;
+            android:theme=&quot;@android:style/Theme.Translucent.NoTitleBar&quot;
+            android:screenOrientation=&quot;portrait&quot;&gt;
+        &lt;/activity&gt;
+
+    &lt;!-- ###################添加UmengAppkey###################### --&gt;
+        &lt;meta-data
+            android:name=&quot;UMENG_APPKEY&quot;
+            android:value=&quot;xxxxxxxxxxxxxxxxxxxxxx&quot; &gt;
+        &lt;/meta-data&gt;
+
+    &lt;/application&gt;
+
+    &lt;uses-sdk android:minSdkVersion=&quot;8&quot; /&gt;
+
+    &lt;!-- ###################声明SDK使用的相关权限###################### --&gt;
+    &lt;!-- 检测网络状态 --&gt;
+    &lt;uses-permission android:name=&quot;android.permission.ACCESS_NETWORK_STATE&quot; /&gt;  
+    &lt;!-- 获取mac地址作为用户的备用唯一标识 --
+    &lt;uses-permission android:name=&quot;android.permission.ACCESS_WIFI_STATE&quot; /&gt;     
+    &lt;!-- 获取用户手机的IMEI，用来唯一的标识用户 --&gt;
+    &lt;uses-permission android:name=&quot;android.permission.READ_PHONE_STATE&quot; /&gt;      
+    &lt;!-- 缓存资源优先存入SDcard --&gt;
+    &lt;uses-permission android:name=&quot;android.permission.WRITE_EXTERNAL_STORAGE&quot; /&gt;
+    &lt;!-- 允许应用程序联网，以便向我们的服务器端发送数据 --&gt;
+    &lt;uses-permission android:name=&quot;android.permission.INTERNET&quot; /&gt;
+&lt;/manifest&gt;
+</code></pre>
+
+<p>如果选用多种UmengSDK产品使用不同Appkey,可为SocialSDK配置单独的appkey,如下：</p>
+<pre><code class="java">/*代码添加Appkey，如果设置了非null值，SocialSDK将使用该值.*/
+SocializeConstants.APPKEY = &quot;xxxxxxxxx&quot;;
+</code></pre>
+
+<!-- 打开平台选择面板 -->
+
+<p><b id=open_shareboard></b></p>
+<h1>4 打开平台选择面板</h1>
+<p><b id=set_share_content></b></p>
+<h3>4.1 首先在您的Activity中添加如下成员变量并设置分享内容</h3>
+<pre><code class="java">// 首先在您的Activity中添加如下成员变量
+final UMSocialService mController = UMServiceFactory.getUMSocialService(&quot;com.umeng.share&quot;);
+// 设置分享内容
+mController.setShareContent(&quot;友盟社会化组件（SDK）让移动应用快速整合社交分享功能，http://www.umeng.com/social&quot;);
+// 设置分享图片, 参数2为图片的url地址
+mController.setShareMedia(new UMImage(getActivity(), 
+                                      &quot;http://www.umeng.com/images/pic/banner_module_social.png&quot;));
+// 设置分享图片，参数2为本地图片的资源引用
+//mController.setShareMedia(new UMImage(getActivity(), R.drawable.icon));
+// 设置分享图片，参数2为本地图片的路径(绝对路径)
+//mController.setShareMedia(new UMImage(getActivity(), 
+//                                BitmapFactory.decodeFile(&quot;/mnt/sdcard/icon.png&quot;)));
+
+// 设置分享音乐
+//UMusic uMusic = new UMusic(&quot;http://sns.whalecloud.com/test_music.mp3&quot;);
+//uMusic.setAuthor(&quot;GuGu&quot;);
+//uMusic.setTitle(&quot;天籁之音&quot;);
+// 设置音乐缩略图
+//uMusic.setThumb(&quot;http://www.umeng.com/images/pic/banner_module_social.png&quot;);
+//mController.setShareMedia(uMusic);
+
+// 设置分享视频
+//UMVideo umVideo = new UMVideo(
+//          &quot;http://v.youku.com/v_show/id_XNTE5ODAwMDM2.html?f=19001023&quot;);
+// 设置视频缩略图
+//umVideo.setThumb(&quot;http://www.umeng.com/images/pic/banner_module_social.png&quot;);
+//umVideo.setTitle(&quot;友盟社会化分享!&quot;);
+//mController.setShareMedia(umVideo);
+</code></pre>
+
+<h3>人人网分享时，如果不设置website，点击¨应用名称¨或者¨图片¨将跳转到人人网主页；如果设置website将跳转到此website的页面。</h3>
+<p>设置website的方式如下：</p>
+<pre><code class="java">mController.setAppWebSite(SHARE_MEDIA.RENREN, &quot;http://www.umeng.com/social&quot;);
+</code></pre>
+
+<p><b id=open_board></b></p>
+<h3>4.2 通过某个按钮或其他方法弹出分享面板</h3>
+<pre><code class="java">mController.getConfig().removePlatform( SHARE_MEDIA.RENREN, SHARE_MEDIA.DOUBAN);
+yourShareButton.setOnClickListener(new OnClickListener() {
+    @Override
+    public void onClick(View v) {
+        // 是否只有已登录用户才能打开分享选择页
+        mController.openShare(getActivity(), false);
+    }
+});
+
+</code></pre>
+
+<p><b id=social_success></b></p>
+<h1>5 验证效果</h1>
+<p>编译并运行后，点击添加分享功能的View出现如下页面，那么说明你已经集成成功基本的分享功能和平台了！但是，为了使您的用户有更好的分享体验，以及您的应用有更多的分享量，更好地在社交平台上传播，我们建议您按照下面的指引进行SSO（免登录）和新平台的设置。</p>
+<table>
+<thead>
+<tr>
+<th align="center"></th>
+<th align="center"></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center"><img src="http://dev.umeng.com/system/images/W1siZiIsIjIwMTQvMDQvMDgvMTJfMDhfNTVfNjE3X3NoYXJlMDEucG5nIl1d/share01.png" width="270" height="450"></td>
+<td align="center"><img src="http://dev.umeng.com/system/images/W1siZiIsIjIwMTQvMDQvMDgvMTJfMDVfMzNfMTQ3X3NoYXJlMDIucG5nIl1d/share02.png" width="270" height="450"></td>
+</tr>
+<tr>
+<td align="center">选择分享平台面板</td>
+<td align="center">分享编辑页</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<blockquote>
+<p>SSO名词解释 : SSO英文全称Single Sign On，单点登录。SSO是在多个应用系统中，用户只需要登录一次就可以访问所有相互信任的应用系统。  <br />
+ 例如用户已经登录新浪微博客户端，使用SSO授权登录时则不需要用户手动输入用户名、密码，直接点击登录即可， 因此可成为免登录.     </p>
+</blockquote>
+<p><b id=social_sso></b></p>
+<h1>6 各平台SSO（免登录）配置</h1>
+<p><b id=social_callback></b></p>
+<h2>6.1 配置SSO授权回调</h2>
+<!--SSO授权回调实现  -->
+
+<h3><b style='color:#F00;'>如果有使用任一平台的SSO授权或者集成了facebook平台, 则必须在对应的activity中实现onActivityResult方法, 并添加如下代码      </b></h3>
+<pre><code class="java">@Override 
+protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+    super.onActivityResult(requestCode, resultCode, data);
+    /**使用SSO授权必须添加如下代码 */
+    UMSsoHandler ssoHandler = mController.getConfig().getSsoHandler(requestCode) ;
+    if(ssoHandler != null){
+       ssoHandler.authorizeCallBack(requestCode, resultCode, data);
+    }
+}
+</code></pre>
+
+<p><b id=social_weixin></b> </p>
+<h2><strong>6.2 分享到微信和朋友圈</strong></h2>
+<h2>6.2.1 添加微信和朋友圈所依赖的jar文件</h2>
+<p>1.解压已下载的zip文件，将platforms/weixin/libs目录中SocialSDK_WeiXin_1.jar，SocialSDK_WeiXin_2.jar拷贝到工程的libs（如果没有此目录，新建libs目录）目录中。<br />
+2.在libs目录中找到SocialSDK_WeiXin_1.jar，SocialSDK_WeiXin_2.jar文件，鼠标右键--&gt;Add to Build Path。   <br />
+1.3 将解压目录中platforms/weixin/res拷贝至你工程的res目录。</p>
+<h2>6.2.2 添加如下集成代码</h2>
+<pre><code class="java">// wx967daebe835fbeac是你在微信开发平台注册应用的AppID, 这里需要替换成你注册的AppID
+String appID = &quot;wx967daebe835fbeac&quot;;
+// 添加微信平台
+UMWXHandler wxHandler = new UMWXHandler(getActivity(),appId);
+wxHandler.addToSocialSDK();
+// 支持微信朋友圈
+UMWXHandler wxCircleHandler = new UMWXHandler(getActivity(),appId);
+wxCircleHandler.setToCircle(true);
+wxCircleHandler.addToSocialSDK();
+</code></pre>
+
+<p>微信和朋友圈支持纯文字，纯图片（点击查看大图），图文，音乐，视频分享。  <br />
+<strong>注意</strong> <br />
+此版本兼容了微信支付的功能，请更新SocialSDK_WeiXin_1.jar文件。       </p>
+<h2>6.2.3 微信和微信朋友圈的回调</h2>
+<p>如果在您的项目中集成了微信或者微信朋友圈，并且您需要准确的分享回调，则需要在AndroidManifest.xml中下注册下面的回调Activity。   </p>
+<pre><code class="xml">&lt;activity
+   android:name=&quot;.wxapi.WXEntryActivity&quot;
+   android:theme=&quot;@android:style/Theme.Translucent.NoTitleBar&quot;
+   android:configChanges=&quot;keyboardHidden|orientation|screenSize&quot;
+   android:exported=&quot;true&quot;
+   android:screenOrientation=&quot;portrait&quot; /&gt;
+</code></pre>
+
+<p>然后将SDK包中platforms/weixin目录下的wxapi文件夹拷贝到您的工程的包目录下, 然后修改WXEntryActivity的完整路径即可。<br />
+   例如social_sdk_example的包名为com.umeng.soexample,因此将wxapi文件夹拷贝到com.umeng.soexample下,最终WXEntryActivity的
+完整路径为com.umeng.soexample.wxapi.WXEntryActivity。 <br />
+   其中分享的回调接口SnsPostListener的onComplete方法的第二个参数代表分享的状态码，当值为200时表示分享成功;其余的值则为分享失败。   </p>
+<p><strong>微信集成相关说明</strong>    </p>
+<p>1.微信集成注意以下几点    </p>
+<blockquote>
+<ul>
+<li>正确填写AppID。         </li>
+<li>工程的包名必须同申请应用的包名一致。   </li>
+<li>在微信开放平台填写你App的的签名，测试、发布时要保证App的签名跟微信开放平台的签名一致。   </li>
+<li>开发者的应用需要通过审核。开发者在申请应用必须要通过微信官网的审核才能进行调试。 </li>
+<li>微信签名过程参考<a href="#guide_wechat_signature">微信签名说明</a>    </li>
+</ul>
+</blockquote>
+<p>2.Demo中集成的微信无法使用？     </p>
+<p>原因：Demo中使用的微信AppID绑定的签名信息和你打包时所用的签名信息不一致,导致无法响应.
+解决办法有两个，您任选其一：   </p>
+<blockquote>
+<ul>
+<li>
+<p>申请一个测试Demo中AppID.(<a href="http://open.weixin.qq.com">申请地址</a>).  <br />
+ 填写"包名"时请使用Demo的包名"com.umeng.soexample".  <br />
+ 填写"签名"使用签名生成工具(<a href="http://open.weixin.qq.com/download/sdk/gen_signature.apk">签名工具</a>)生成,签名时填写Demo的包名.  <br />
+ 获取微信AppID后替换Demo中的使用的AppID.    </p>
+</li>
+<li>
+<p>使用SDK中的 debug.keystore编译运行Demo工程.     </p>
+</li>
+</ul>
+</blockquote>
+<p><b id=social_qq_sso></b>  </p>
+<h2>6.3 <strong>分享给QQ好友</strong></h2>
+<h2>6.3.1 添加QQ分享所依赖的jar文件</h2>
+<ol>
+<li>解压已下载的zip文件，将platforms/qq_zone/libs目录中SocialSDK_QQZone_1.jar,SocialSDK_QQZone_2.jar，SocialSDK_QQZone_3.jar拷贝到工程的libs（如果没有此目录，新建libs目录）目录中。    </li>
+<li>在libs目录中找到SocialSDK_QQZone_1.jar,SocialSDK_QQZone_2.jar，SocialSDK_QQZone_3.jar文件，鼠标右键--&gt;Add to Build Path。     </li>
+<li>将解压目录中platforms/qq_zone/res文件拷贝至你工程res目录。 </li>
+<li>在AndroidManifest.xml中注册AuthActivity,QQ空间和QQ共用该授权Activity,具体配置参考上文的AndroidManifest.xml文件。          </li>
+<li>请在QQ互联填写签名：移动应用信息-&gt;平台信息-&gt;apk签名.(<a href="http://connect.qq.com/manage/">签名地址</a>)。                  </li>
+</ol>
+<h2>6.3.2 添加如下集成代码</h2>
+<pre><code class="java">//参数1为当前Activity，参数2为开发者在QQ互联申请的APP ID，参数3为开发者在QQ互联申请的APP kEY.
+UMQQSsoHandler qqSsoHandler = new UMQQSsoHandler(getActivity(), &quot;100424468&quot;,
+                &quot;c7394704798a158208a74ab60104f0ba&quot;);
+qqSsoHandler.addToSocialSDK();  
+</code></pre>
+
+<p><strong>注意:</strong>    </p>
+<blockquote>
+<p>1.此版本集成了QQ的最新jar文件，请更新SocialSDK_QQZone_1.jar,SocialSDK_QQZone_2.jar，SocialSDK_QQZone_3.jar文件。            <br />
+2.QQ分享内容为音乐，视频的时候，其形式必须为url;图片支持url和本地图片类型。     <br />
+3.QQ SSO授权不会在onActivityResult方法内被调用。    <br />
+4.未安装手机QQ客户端的情况下，QQ不支持纯图片分享。    <br />
+5.未安装手机QQ客户端的情况下，QQ取消授权不执行相关回调。    <br />
+6.QQ和QQ空间授权，对于同一个应用同一个账号返回的uid，openid相同。  </p>
+</blockquote>
+<p><b id=social_qzone_sso></b></p>
+<h2>6.4 <strong>SSO（免登录）分享到QQ空间</strong></h2>
+<h2>6.4.1 添加QQ空间所依赖的jar文件跟资源文件</h2>
+<p>注意在QQ互联填写签名：移动应用信息-&gt;平台信息-&gt;apk签名。移动应用信息-&gt;平台信息-&gt;apk签名.(<a href="http://connect.qq.com/manage/">签名地址</a>)
+如果已经添加了SocialSDK_QQZone_1.jar,SocialSDK_QQZone_2.jar,SocialSDK_QQZone_3.jar文件，则不需要再次添加。  <br />
+1.1 解压已下载的zip文件，将platforms/qq_qzone/libs中 SocialSDK_QQZone_1.jar,SocialSDK_QQZone_2.jar,SocialSDK_QQZone_3.jar拷贝到工程的libs（如果没有此目录，新建libs目录）目录中。<br />
+1.2 在libs目录中找到SocialSDK_QQZone_1.jar,SocialSDK_QQZone_2.jar,SocialSDK_QQZone_3.jar文件，鼠标右键--&gt;Add to Build Path。 <br />
+1.3 将解压目录中platforms/qq_zone/res文件拷贝至你工程res目录。
+1.4 在AndroidManifest.xml中注册AuthActivity,QQ空间和QQ共用该授权Activity,具体配置参考上文的AndroidManifest.xml文件。      </p>
+<h2>6.4.2 在集成代码中添加如下代码</h2>
+<pre><code class="java">//参数1为当前Activity，参数2为开发者在QQ互联申请的APP ID，参数3为开发者在QQ互联申请的APP kEY.
+QZoneSsoHandler qZoneSsoHandler = new QZoneSsoHandler(getActivity(), &quot;100424468&quot;,
+                &quot;c7394704798a158208a74ab60104f0ba&quot;);
+qZoneSsoHandler.addToSocialSDK();
+</code></pre>
+
+<p><strong>注意：</strong></p>
+<blockquote>
+<p>1.本次集成了QZone的最新jar包，升级时请注意更新SocialSDK_QQZone_1.jar,SocialSDK_QQZone_2.jar，SocialSDK_QQZone_3.jar文件。        <br />
+2.在进行QZone SSO授权时，请在AndroidManifest.xml中配置相应的Activity。具体参加上文AndroidManifest.xml文件配置。           <br />
+3.QZone不支持纯图片分享。      <br />
+4.无手机QQ客户端的情况下，QQ取消授权不执行相关回调。    <br />
+5.QQ和QQ空间授权，对于同一个应用同一个账号返回的uid，openid相同。    </p>
+</blockquote>
+<p><b id="social_sina_sso"></b></p>
+<h2>6.5 <strong>SSO（免登录）分享到新浪微博</strong></h2>
+<h2>**<b style='color:#F00;'>注意一定保证在新浪微博上填写应用签名，原因参考：http://support.umeng.com/1955/</b></h2>
+<h3>1.添加SSO必须的文件</h3>
+<p>1：将platforms/sina/目录下的src覆盖到项目工程根目录下，确保已添加'com/sina/sso/RemoteSSO.aidl'文件。
+2：将platforms/sina/libs中的SocialSDK_Sina.jar添加到工程libs中并将该jar加入到build path中。</p>
+<h2>6.5.2 在代码中添加如下代码</h2>
+<pre><code class="java">//设置新浪SSO handler
+mController.getConfig().setSsoHandler(new SinaSsoHandler());
+</code></pre>
+
+<p><b id=social_tencent_sso></b></p>
+<h2>6.6 <strong>SSO（免登录）分享到腾讯微博</strong></h2>
+<h2>6.6.1 添加腾讯微博SSO所依赖的jar文件</h2>
+<p>1.解压已下载的zip文件，将platforms/tencentweibo/libs中SocialSDK_tencentWB_1.jar,SocialSDK_tencentWB_2.jar，,SocialSDK_tencentWB_3.jar拷贝到工程的libs（如果没有此目录，新建libs目录）目录中.<br />
+2.在libs目录中找到SocialSDK_tencentWB_1.jar,SocialSDK_tencentWB_2.jar，,SocialSDK_tencentWB_3.jar文件，鼠标右键--&gt;Add to Build Path. </p>
+<h2>6.6.2 在集成代码中添加如下代码</h2>
+<pre><code class="java">//设置腾讯微博SSO handler
+mController.getConfig().setSsoHandler(new TencentWBSsoHandler());
+</code></pre>
+
+<p><strong>注意:</strong></p>
+<blockquote>
+<p>1.手机中必须安装微博客户端V3.8.1及以上的版本才支持SSO功能.  <br />
+2.腾讯微博的SSO没有回调。由于腾讯微博SSO没有提供回调，因此腾讯微博SSO不会在onActivityResult方法内被调用（腾讯微博授权流程不经过onActivityResult方法).    </p>
+</blockquote>
+<p><b id=social_renren_sso></b></p>
+<h2>6.7 <strong>SSO（免登录）分享到人人</strong></h2>
+<h2>6.7.1 添加人人SSO所依赖的jar文件</h2>
+<p>1.解压已下载的zip文件，将platforms/renren/libs/SocialSDK_renren_1.jar,SocialSDK_renren_2.jar,拷贝到你工程libs目录中。 <br />
+2.在libs工程找到SocialSDK_renren_1.jar,SocialSDK_renren_2.jar文件，鼠标右键--&gt;Add to Build Path。</p>
+<h2>6.7.2 在集成代码中添加如下代码</h2>
+<pre><code class="java">//添加人人网SSO授权功能
+//APPID:201874
+//API Key:28401c0964f04a72a14c812d6132fcef
+//Secret:3bf66e42db1e4fa9829b955cc300b737
+RenrenSsoHandler renrenSsoHandler = new RenrenSsoHandler(getActivity(),
+            &quot;201874&quot;, &quot;28401c0964f04a72a14c812d6132fcef&quot;,
+            &quot;3bf66e42db1e4fa9829b955cc300b737&quot;);
+mController.getConfig().setSsoHandler(renrenSsoHandler);
+</code></pre>
+
+<p>在SDK中的OAuth授权部分包含了Activity，为了程序能正常允许，请将以下Activity信息在您的应该工程Androidmanefest.xml中注册：      </p>
+<pre><code class="xml">&lt;activity android:name=&quot;com.renn.rennsdk.oauth.OAuthActivity&quot;
+android:configChanges=&quot;orientation|navigation|keyboardHidden&quot;/&gt;
+</code></pre>
+
+<pre><code>然后添加如下权限 :
+</code></pre>
+<pre><code class="xml">    &lt;uses-permission android:name=&quot;android.permission.GET_TASKS&quot; /&gt;
+    &lt;uses-permission android:name=&quot;android.permission.SET_DEBUG_APP&quot; /&gt;
+    &lt;uses-permission android:name=&quot;android.permission.SYSTEM_ALERT_WINDOW&quot; /&gt;
+    &lt;uses-permission android:name=&quot;android.permission.GET_ACCOUNTS&quot; /&gt;
+    &lt;uses-permission android:name=&quot;android.permission.USE_CREDENTIALS&quot; /&gt;
+    &lt;uses-permission android:name=&quot;android.permission.MANAGE_ACCOUNTS&quot; /&gt;
+</code></pre>
+
+<p><strong>注意</strong></p>
+<blockquote>
+<p>1.手机中必须安装人人客户端V5.9.3及以上的版本才支持SSO功能。  <br />
+2.由于人人SSO没有提供回调，因此人人SSO不会在onActivityResult方法内被调用（人人SSO授权流程不经过onActivityResult方法)。</p>
+</blockquote>
+<p><b id=social_sms></b></p>
+<h2>6.8 <strong>分享到短信</strong></h2>
+<h2>6.8.1 添加短信平台所依赖的jar文件和资源</h2>
+<p>1.解压已下载的zip文件，将platforms/sms/libs/SocialSDK_sms.jar拷贝到你工程libs目录中。 <br />
+2.在libs工程找到SocialSDK_sms.jar文件，鼠标右键--&gt;Add to Build Path。
+3.将res/drawable中的资源添加到你工程对应的res/drawable目录中。</p>
+<h2>6.8.2 在集成代码中添加如下代码</h2>
+<pre><code class="java">// 添加短信
+SmsHandler smsHandler = new SmsHandler();
+smsHandler.addToSocialSDK();
+</code></pre>
+
+<pre><code>添加如上代码后，短信平台就会添加到SDK中。
+</code></pre>
+<p><b id=social_email></b></p>
+<h2>6.9 <strong>分享到邮件</strong></h2>
+<h2>6.9.1 添加邮件平台所依赖的jar文件和资源</h2>
+<p>1.解压已下载的zip文件，将platforms/email/libs/SocialSDK_email.jar拷贝到你工程libs目录中。 <br />
+2.在libs工程找到SocialSDK_email.jar文件，鼠标右键--&gt;Add to Build Path。
+3.将res/drawable中的资源添加到你工程对应的res/drawable目录中。</p>
+<h2>6.9.2 在集成代码中添加如下代码</h2>
+<pre><code class="java">// 添加email
+EmailHandler emailHandler = new EmailHandler();
+emailHandler.addToSocialSDK();
+</code></pre>
+
+<pre><code>添加如上代码后，邮件平台就会添加到SDK中。
+</code></pre>
+<p><b id=guide_wechat_signature></b></p>
+<h1>7 微信签名说明</h1>
+<p>由于微信的签名过程跟验证流程较多，出错的可能性较大，这里将对微信的签名过程跟验证做详细的说明。</p>
+<h3>7.1：获取签名文件</h3>
+<p>获取应用签名方式有两种
+方式一：    <br />
+1：用eclipse导出 <strong>带签名</strong> 的apk文件，注意此时选择的签名文件是你发布app时的签名文件。在导出的最后一步，eclipse会显示一个Certificate fingerprints(证书指纹)，如下图。此时找到MD5值，将该MD5值复制出来，按照“ <strong>去掉冒号(:)，大写转小写</strong> ”的规则装换，此时字符串就是签名。</p>
+<table>
+<thead>
+<tr>
+<th align="center"></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center"><img src="http://dev.umeng.com/system/images/W1siZiIsIjIwMTQvMDYvMTEvMTZfMDhfMjhfMTUwX3dlY2hhdF9zaWduYXR1cmVfMS5wbmciXV0/wechat_signature_1.png" width="500" height="400"></td>
+</tr>
+<tr>
+<td align="center">通过eclispe获取签名</td>
+</tr>
+</tbody>
+</table>
+<p>方式二：   <br />
+导出 <strong>带签名</strong> 的apk文件，将该apk文件安装至手机中。安装微信的<a href="https://open.weixin.qq.com/zh_CN/htmledition/res/dev/download/sdk/Gen_Signature_Android.apk">签名工具</a>,打开GenSignature应用程序，填写你App的包名，点击“Get Signature”即可得到签名。    </p>
+<table>
+<thead>
+<tr>
+<th align="center"></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center"><img src="http://dev.umeng.com/system/images/W1siZiIsIjIwMTQvMDYvMTEvMTZfMTFfMDNfNDIyX3dlY2hhdF9zaWduYXR1cmVfMi5wbmciXV0/wechat_signature_2.png" width="500" height="400"></td>
+</tr>
+<tr>
+<td align="center">通过微信签名工具获取签名</td>
+</tr>
+</tbody>
+</table>
+<h3>7.2：请在<a href="https://open.weixin.qq.com/">微信开放平台</a>申请应用</h3>
+<p>1：填写App的相关信息，注意确保包名跟签名填写正确，填写完成提交微信审核。</p>
+<h3>7.3：微信集成测试</h3>
+<p>1：在进行微信集成测试时，请填写你申请App的AppID。测试时需要导出带签名的apk文件测试，否则将不能正常分享。</p>
+<p><b id=platform_register_address></b></p>
+<h1>8 应用信息注册地址列表</h1>
+<p>下面是Social SDK不同平台应用信息注册网站的地址:  </p>
+<table>
+<thead>
+<tr>
+<th align="center">平台</th>
+<th align="center">网址</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">新浪微博</td>
+<td align="center">http://open.weibo.com</td>
+</tr>
+<tr>
+<td align="center">腾讯微博</td>
+<td align="center">http://dev.t.qq.com</td>
+</tr>
+<tr>
+<td align="center">QQ空间</td>
+<td align="center">http://connect.qq.com/intro/login/</td>
+</tr>
+<tr>
+<td align="center">微信好友</td>
+<td align="center">http://open.weixin.qq.com</td>
+</tr>
+<tr>
+<td align="center">FaceBook</td>
+<td align="center">https://developers.facebook.com</td>
+</tr>
+<tr>
+<td align="center">Twitter</td>
+<td align="center">https://dev.twitter.com</td>
+</tr>
+<tr>
+<td align="center">人人</td>
+<td align="center">http://dev.renren.com</td>
+</tr>
+<tr>
+<td align="center">豆瓣</td>
+<td align="center">http://developers.douban.com/</td>
+</tr>
+</tbody>
+</table>
+<p><b id=proguard></b></p>
+<h1>8 混淆</h1>
+<p>为了保证引用友盟Social SDK jar文件以及腾讯jar文件被混淆，请在proguard.cfg文件中添加以下代码避免被混淆.      </p>
+<pre><code class="text">
+-dontshrink
+-dontoptimize
+-dontwarn com.google.android.maps.**
+-dontwarn android.webkit.WebView
+-dontwarn com.umeng.**
+-dontwarn com.tencent.weibo.sdk.**
+-dontwarn com.facebook.**
+
+-libraryjars libs/SocialSDK_QQZone_2.jar
+
+-keep enum com.facebook.**
+-keepattributes Exceptions,InnerClasses,Signature
+-keepattributes *Annotation*
+-keepattributes SourceFile,LineNumberTable
+
+-keep public interface com.facebook.**
+-keep public interface com.tencent.**
+-keep public interface com.umeng.socialize.**
+-keep public interface com.umeng.socialize.sensor.**
+-keep public interface com.umeng.scrshot.**
+
+-keep public class com.umeng.socialize.* {*;}
+-keep public class javax.**
+-keep public class android.webkit.**
+
+-keep class com.facebook.**
+-keep class com.umeng.scrshot.**
+-keep public class com.tencent.** {*;}
+-keep class com.umeng.socialize.sensor.**
+
+-keep class com.tencent.mm.sdk.modelmsg.WXMediaMessage {*;}
+
+-keep class com.tencent.mm.sdk.modelmsg.** implements com.tencent.mm.sdk.modelmsg.WXMediaMessage$IMediaObject {*;}
+
+-keep class im.yixin.sdk.api.YXMessage {*;}
+-keep class im.yixin.sdk.api.** implements im.yixin.sdk.api.YXMessage$YXMessageData{*;}
+
+-keep public class [your_pkg].R$*{
+    public static final int *;
+}
+</code></pre>
+
+<p><b id=detail_integration></b></p>
+<h1>9 进阶使用</h1>
+<p>如果上述文档不能满足你的分享需求，请移步至[详细集成文档] (http://dev.umeng.com/social/android/share/specific-integration)</p></body></html>

@@ -1,0 +1,31 @@
+ImageView常用XML属性
+
+ImageView也就是图像视图，用于在屏幕中显示任何的Drawable 对象，通常用来显示图片。有如下属性：
+
+android:adjustViewBounds：
+
+用于设置ImageView是否调整自己的边界来保持所显示图片的长宽 比。
+
+android:maxHeight：
+
+设置ImageView的最大高度，需要设置android:adjustViewBounds 属性值为true，否则不起作用。
+
+android:maxWidth：
+
+设置ImageView的最大宽度，需要设置android:adjustViewBounds 属性值为true，否则不起作用。
+
+android:scaleType：
+
+用于设置所显示的图片如何缩放或移动以适应ImageView的大小， 其属性值可以是matrix（使用matrix方式进行缩放）、fitXY（对图片横 向、纵向独立缩放，使得该图片完全适应于该ImageView，图片的纵横 比可能会改变）、fitStart（保持纵横比缩放图片，直到该图片能完全显 示在ImageView中，缩放完成后该图片放在ImageView的左上角）、 fitCenter（保持纵横比缩放图片，直到该图片能完全显示在ImageView 中，缩放完成后该图片放在ImageView的中央）、fitEnd（保持纵横比 缩放图片，直到该图片能完全显示在ImageView中，缩放完成后该图片 放在ImageView的右下角）、center（把图像放在ImageView的中间， 但不进行任何缩放）、centerCrop（保持纵横比缩放图片，以使得图片 能完全覆盖ImageView）或centerInside（保持纵横比缩放图片，以使 得ImageView能完全显示该图片）。
+
+android:src：
+
+用于设置ImageView所显示的Drawable对象的ID，例如，设置显 示保存在res/drawable目录下的名称为flower.jpg的图片，可以将属性 值设置为android:src="@drawable/flower"。
+
+android:tint：
+
+用于为图片着色，其属性值可以是“#rgb”、“#argb”、 “#rrggbb”或“#aarrggbb”表示的颜色值。
+
+我有一个很不错的android学习交流群，，里面有高手和干货的希 望你能加入进来。一起学习和交流群号是：255648309
+
+来源：清源教育

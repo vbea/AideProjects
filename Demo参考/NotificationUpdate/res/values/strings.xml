@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+	<string name="hello">Hello World, NotificationUpdateActivity!</string>
+	<string name="app_name">NotificationUpdate</string>
+	<string name="updataurl">http://182.254.211.235:80/ZDApp/update.xml</string>
+
+</resources>

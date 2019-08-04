@@ -1,0 +1,80 @@
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/TableLayout1"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    tools:context=".FirstActivity" >
+
+    <Button
+        android:id="@+id/btn_customevent_args_count"
+        android:layout_width="92dp"
+        android:layout_height="40dp"
+        android:text="统计次数（参数类型自定义事件）" />
+
+    <Button
+        android:id="@+id/btn_customevent_kv_count"
+        android:layout_width="92dp"
+        android:layout_height="40dp"
+        android:text="统计次数（KeyValue类型自定义事件）" />
+
+    <Button
+        android:id="@+id/btn_customevent_args_duration_begin"
+        android:layout_width="92dp"
+        android:layout_height="40dp"
+        android:text="开始统计时长（参数类型自定义事件）" />
+
+    <Button
+        android:id="@+id/btn_customevent_args_duration_end"
+        android:layout_width="92dp"
+        android:layout_height="40dp"
+        android:text="结束统计时长（参数类型自定义事件）" />
+
+    <Button
+        android:id="@+id/btn_customevent_kv_duration_begin"
+        android:layout_width="92dp"
+        android:layout_height="40dp"
+        android:text="开始统计时长（KeyValue类型自定义事件）" />
+
+    <Button
+        android:id="@+id/btn_customevent_kv_duration_end"
+        android:layout_width="92dp"
+        android:layout_height="40dp"
+        android:text="结束统计时长（KeyValue类型自定义事件）" />
+
+    <Button
+        android:id="@+id/btn_report_error"
+        android:layout_width="92dp"
+        android:layout_height="40dp"
+        android:text="上报字符串错误" />
+
+    <Button
+        android:id="@+id/btn_report_exception"
+        android:layout_width="92dp"
+        android:layout_height="40dp"
+        android:text="上报异常信息" />
+
+    <Button
+        android:id="@+id/btn_monitor_events"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:text="云监控" />
+
+    <Button
+        android:id="@+id/btn_init_nativeCrash"
+        android:layout_width="92dp"
+        android:layout_height="40dp"
+        android:text="初始化NativeCrash" />
+
+    <Button
+        android:id="@+id/btn_catch_unhandled_exception"
+        android:layout_width="92dp"
+        android:layout_height="40dp"
+        android:text="抛出java异常" />
+
+    <Button
+        android:id="@+id/btn_catch_native_crash"
+        android:layout_width="92dp"
+        android:layout_height="40dp"
+        android:text="抛出native异常" />
+
+</TableLayout>

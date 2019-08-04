@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent"
+	android:layout_height="wrap_content"
+	android:scrollbars="none">
+<LinearLayout
+	android:layout_height="wrap_content"
+	android:layout_width="fill_parent"
+	android:gravity="left|center_horizontal"
+	android:paddingLeft="20dp"
+	android:paddingRight="20dp"
+	android:orientation="vertical">
+
+	<LinearLayout
+		android:layout_height="wrap_content"
+		android:layout_width="wrap_content"
+		android:orientation="vertical">
+
+		<LinearLayout
+			android:layout_height="wrap_content"
+			android:layout_width="fill_parent"
+			android:layout_marginTop="10dp"
+			android:orientation="horizontal">
+
+			<TextView
+				android:layout_height="wrap_content"
+				android:layout_width="wrap_content"
+				android:textSize="14sp"
+				android:textColor="#000000"
+				android:text="名称："/>
+
+			<TextView
+				android:id="@+id/fileattr_name"
+				android:layout_height="wrap_content"
+				android:layout_width="wrap_content"
+				android:textSize="14sp"
+				android:textColor="#989898"
+				android:text="名称xxxxxxxxx"/>
+
+		</LinearLayout>
+
+		<LinearLayout
+			android:layout_height="wrap_content"
+			android:layout_width="fill_parent"
+			android:layout_marginTop="10dp"
+			android:orientation="horizontal">
+
+			<TextView
+				android:layout_height="wrap_content"
+				android:layout_width="wrap_content"
+				android:textSize="14sp"
+				android:textColor="#000000"
+				android:text="位置："/>
+
+			<TextView
+				android:id="@+id/fileattr_path"
+				android:layout_height="wrap_content"
+				android:layout_width="wrap_content"
+				android:textSize="14sp"
+				android:textColor="#989898"
+				android:text="位置xxxxxxxxx"/>
+
+		</LinearLayout>
+		
+		<LinearLayout
+			android:layout_height="wrap_content"
+			android:layout_width="fill_parent"
+			android:layout_marginTop="10dp"
+			android:orientation="horizontal">
+
+			<TextView
+				android:layout_height="wrap_content"
+				android:layout_width="wrap_content"
+				android:textSize="14sp"
+				android:textColor="#000000"
+				android:text="权限："/>
+
+			<TextView
+				android:id="@+id/fileattr_attr"
+				android:layout_height="wrap_content"
+				android:layout_width="fill_parent"
+				android:textSize="14sp"
+				android:textColor="#989898"
+				android:text="rwxrwxrwx"/>
+
+		</LinearLayout>
+
+		<LinearLayout
+			android:layout_height="wrap_content"
+			android:layout_width="fill_parent"
+			android:layout_marginTop="10dp"
+			android:orientation="horizontal">
+
+			<TextView
+				android:layout_height="wrap_content"
+				android:layout_width="wrap_content"
+				android:textSize="14sp"
+				android:textColor="#000000"
+				android:text="大小："/>
+
+			<TextView
+				android:id="@+id/fileattr_size"
+				android:layout_height="wrap_content"
+				android:layout_width="wrap_content"
+				android:textSize="14sp"
+				android:textColor="#989898"
+				android:text="正在计算…"/>
+
+		</LinearLayout>
+
+		<LinearLayout
+			android:layout_height="wrap_content"
+			android:layout_width="fill_parent"
+			android:layout_marginTop="10dp"
+			android:orientation="horizontal">
+
+			<TextView
+				android:layout_height="wrap_content"
+				android:layout_width="wrap_content"
+				android:textSize="14sp"
+				android:textColor="#000000"
+				android:text="时间："/>
+
+			<TextView
+				android:id="@+id/fileattr_time"
+				android:layout_height="wrap_content"
+				android:layout_width="wrap_content"
+				android:textSize="14sp"
+				android:textColor="#989898"
+				android:text="时间戳xxxxxxxx"/>
+
+		</LinearLayout>
+		
+		<LinearLayout
+			android:layout_height="wrap_content"
+			android:layout_width="fill_parent"
+			android:layout_marginTop="10dp"
+			android:orientation="horizontal">
+
+			<TextView
+				android:layout_height="wrap_content"
+				android:layout_width="wrap_content"
+				android:textSize="14sp"
+				android:textColor="#000000"
+				android:text="所有者："/>
+
+			<TextView
+				android:id="@+id/fileattr_owner"
+				android:layout_height="wrap_content"
+				android:layout_width="fill_parent"
+				android:textSize="14sp"
+				android:textColor="#989898"
+				android:text="root"/>
+
+		</LinearLayout>
+		
+		<LinearLayout
+			android:layout_height="wrap_content"
+			android:layout_width="fill_parent"
+			android:layout_marginTop="10dp"
+			android:orientation="horizontal">
+
+			<TextView
+				android:layout_height="wrap_content"
+				android:layout_width="wrap_content"
+				android:textSize="14sp"
+				android:textColor="#000000"
+				android:text="用户组："/>
+
+			<TextView
+				android:id="@+id/fileattr_user"
+				android:layout_height="wrap_content"
+				android:layout_width="fill_parent"
+				android:textSize="14sp"
+				android:textColor="#989898"
+				android:text="root"/>
+
+		</LinearLayout>
+		
+		<LinearLayout
+			android:layout_height="wrap_content"
+			android:layout_width="fill_parent"
+			android:layout_marginTop="10dp"
+			android:orientation="horizontal">
+
+			<TextView
+				android:layout_height="wrap_content"
+				android:layout_width="wrap_content"
+				android:textSize="14sp"
+				android:textColor="#000000"
+				android:text="MIME："/>
+
+			<TextView
+				android:id="@+id/fileattr_type"
+				android:layout_height="wrap_content"
+				android:layout_width="wrap_content"
+				android:textSize="14sp"
+				android:textColor="#989898"
+				android:text="MIMExxxxxxxx"/>
+
+		</LinearLayout>
+		
+		<LinearLayout
+			android:layout_height="wrap_content"
+			android:layout_width="fill_parent"
+			android:layout_marginTop="10dp"
+			android:orientation="horizontal">
+
+			<TextView
+				android:id="@+id/fileattr_md5t"
+				android:layout_height="wrap_content"
+				android:layout_width="wrap_content"
+				android:textSize="14sp"
+				android:textColor="#000000"
+				android:text="MD5："/>
+
+			<TextView
+				android:id="@+id/fileattr_md5"
+				android:layout_height="wrap_content"
+				android:layout_width="wrap_content"
+				android:textSize="14sp"
+				android:textColor="#989898"
+				android:text="正在计算…"/>
+
+		</LinearLayout>
+		
+		<LinearLayout
+			android:id="@+id/file_sha1l"
+			android:layout_height="wrap_content"
+			android:layout_width="fill_parent"
+			android:layout_marginTop="10dp"
+			android:orientation="horizontal">
+
+			<TextView
+				android:layout_height="wrap_content"
+				android:layout_width="wrap_content"
+				android:textSize="14sp"
+				android:textColor="#000000"
+				android:text="SHA1："/>
+
+			<TextView
+				android:id="@+id/fileattr_sha1"
+				android:layout_height="wrap_content"
+				android:layout_width="wrap_content"
+				android:textSize="14sp"
+				android:textColor="#989898"
+				android:text="正在计算…"/>
+
+		</LinearLayout>
+
+	</LinearLayout>
+
+</LinearLayout>
+</ScrollView>
+

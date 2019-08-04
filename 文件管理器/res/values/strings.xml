@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">File Management
+	</string>
+	<string name="setting">Settings
+	</string>
+	<string name="up_one_level">..(UpLovel)
+	</string>
+	<string name="current_dir">.(Refresh)
+	</string>
+	<string name="files">File Manager
+	</string>
+	<string name="file_inter">File View Mode
+	</string>
+	<string name="file_folder">Folder Preferred
+	</string>
+	<string name="file_showhide">Show Hidden Files
+	</string>
+	<string name="file_savedc">Save the directory browsing
+	</string>
+	<string name="file_mode1">Simple Mode
+	</string>
+	<string name="file_mode2">Detail Mode
+	</string>
+	<string name="ok">OK
+	</string>
+	<string name="yes">Yes
+	</string>
+	<string name="no">No
+	</string>
+	<string name="cancel">Cancel
+	</string>
+	<string name="exit">Exit
+	</string>
+	<string name="save">Save
+	</string>
+	<string name="paste">Paste
+	</string>
+	<string name="dc_copy">Copy
+	</string>
+	<string name="home">Home
+	</string>
+	<string name="open">Open..
+	</string>
+	<string name="rename">Rename
+	</string>
+	<string name="delete">Delete
+	</string>
+	<string name="cut">Cut
+	</string>
+	<string name="attr">Properties
+	</string>
+	<string name="newfolder">New Folder
+	</string>
+	<string name="newfile">New File
+	</string>
+	<string name="refresh">Refresh
+	</string>
+	<string name="file_home">Home
+	</string>
+	<string name="sdcard">SD Card
+	</string>
+	<string name="store">Storage
+	</string>
+	<string name="newv">New
+	</string>
+	<string name="tips">Prompt
+	</string>
+	<string name="delete_file">Delete File
+	</string>
+	<string name="delete_folder">Delete Folder
+	</string>
+	<string name="move">Move
+	</string>
+	<string name="file_namewarning">There is already a file with the some name in this location,do you replace?
+	</string>
+	<string name="delete_success">The delete successfully.
+	</string>
+	<string name="delete_fail">The delete failed.
+	</string>
+	<string name="delete_warn">Are you sure you want to delete?
+	</string>
+	<string name="operate_success">The operation successfully.
+	</string>
+	<string name="operate_fail">The operation failed.
+	</string>
+	<string name="operate_cancel">The operation is canceled.
+	</string>
+	<string name="copy_success">Copy successfully.
+	</string>
+	<string name="copy_fail">Copy failed.
+	</string>
+	<string name="move_success">Move successfully.
+	</string>
+	<string name="move_fail">Move failed.
+	</string>
+	<string name="paste_success">Paste successfully.
+	</string>
+	<string name="paste_fail">Paste failed.
+	</string>
+	<string name="copying">Copying...
+	</string>
+	<string name="moving">Moving...
+	</string>
+	<string name="canceling">Canceling...
+	</string>
+	<string name="deletefile_notempty">This folder is not empty, are you sure you want to delete all files and folders in this folder?
+	</string>
+</resources>

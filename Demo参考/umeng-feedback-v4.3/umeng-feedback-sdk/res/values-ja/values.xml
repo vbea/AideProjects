@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- From: file:/Users/lucas/dev/workspace/umeng/feedback/umeng-feedback-android/sdk/src/main/res/values-ja/umeng_fb_strings.xml -->
+    <eat-comment />
+
+    <string name="umeng_fb_back">戻る</string>
+    <string name="umeng_fb_contact_info">連絡</string>
+    <string name="umeng_fb_contact_info_hint">メール、電話、その他の連絡先</string>
+    <string name="umeng_fb_contact_update_at">更新</string>
+    <string name="umeng_fb_notification_ticker_text">新しい回答を持っている</string>
+    <string name="umeng_fb_reply_content_default"></string>
+    <string name="umeng_fb_reply_content_hint"></string>
+    <string name="umeng_fb_reply_date_default"></string>
+    <string name="umeng_fb_send">送信</string>
+    <string name="umeng_fb_title">お客様のご返答</string>
+
+</resources>

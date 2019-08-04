@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:id="@+id/ll"
+    android:background="@drawable/white"
+    >
+<TextView  android:id="@+id/tv"
+    android:layout_width="fill_parent" 
+    android:layout_height="wrap_content" 
+	android:gravity="center"
+    android:text="translate动画效果"
+    />
+	<TextView  android:id="@+id/tr1"
+		android:layout_width="fill_parent" 
+		android:layout_height="wrap_content" 
+		android:gravity="center"
+		android:text="translate动画效果2"
+		android:visibility="invisible"
+    />
+<TextView  android:id="@+id/tv2"
+    android:layout_width="fill_parent" 
+    android:layout_height="wrap_content" 
+    android:text="scale动画效果"
+    />
+<TextView  android:id="@+id/tv3"
+    android:layout_width="fill_parent" 
+    android:layout_height="wrap_content" 
+    android:text="alpha动画效果"
+	android:paddingBottom="20dp"
+    />
+<TextView  android:id="@+id/tv4"
+    android:layout_width="wrap_content" 
+    android:layout_height="wrap_content" 
+    android:text="rotate动画效果"
+    />
+<Button android:id="@+id/bt3"
+	 android:layout_width="fill_parent" 
+    android:layout_height="wrap_content" 
+    android:text="动画演示"
+/>
+<Button android:id="@+id/bt"
+	 android:layout_width="fill_parent" 
+    android:layout_height="wrap_content" 
+    android:text="切换"
+/>
+</LinearLayout>

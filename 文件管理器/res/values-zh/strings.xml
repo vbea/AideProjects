@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">文件管理器
+	</string>
+	<string name="setting">首选项
+	</string>
+	<string name="up_one_level">..(上级目录)
+	</string>
+	<string name="current_dir">.(刷新)
+	</string>
+	<string name="files">文件管理器
+	</string>
+	<string name="file_inter">查看模式
+	</string>
+	<string name="file_folder">文件夹优先
+	</string>
+	<string name="file_showhide">显示隐藏文件
+	</string>
+	<string name="file_savedc">保存浏览的目录
+	</string>
+	<string name="file_mode1">简单模式
+	</string>
+	<string name="file_mode2">详细模式
+	</string>
+	<string name="ok">确定
+	</string>
+	<string name="cancel">取消
+	</string>
+	<string name="yes">是
+	</string>
+	<string name="no">否
+	</string>
+	<string name="exit">退出
+	</string>
+	<string name="save">保存
+	</string>
+	<string name="paste">粘贴
+	</string>
+	<string name="dc_copy">复制
+	</string>
+	<string name="home">主文件夹
+	</string>
+	<string name="open">打开
+	</string>
+	<string name="rename">重命名
+	</string>
+	<string name="delete">删除
+	</string>
+	<string name="cut">剪切
+	</string>
+	<string name="attr">属性
+	</string>
+	<string name="newfolder">新建文件夹
+	</string>
+	<string name="newfile">新建文件
+	</string>
+	<string name="refresh">刷新
+	</string>
+	<string name="file_home">主文件夹
+	</string>
+	<string name="sdcard">SD卡
+	</string>
+	<string name="store">存储状态
+	</string>
+	<string name="newv">新
+	</string>
+	<string name="tips">提示
+	</string>
+	<string name="delete_file">删除文件
+	</string>
+	<string name="delete_folder">删除文件夹
+	</string>
+	<string name="move">移动
+	</string>
+	<string name="file_namewarning">文件名重复，是否覆盖？
+	</string>
+	<string name="delete_success">删除成功
+	</string>
+	<string name="delete_fail">删除失败
+	</string>
+	<string name="delete_warn">确定要删除吗？
+	</string>
+	<string name="operate_success">操作成功
+	</string>
+	<string name="operate_fail">操作失败
+	</string>
+	<string name="operate_cancel">操作已取消
+	</string>
+	<string name="copy_success">复制成功
+	</string>
+	<string name="copy_fail">复制失败
+	</string>
+	<string name="move_success">移动成功
+	</string>
+	<string name="move_fail">移动失败
+	</string>
+	<string name="paste_success">粘贴成功
+	</string>
+	<string name="paste_fail">粘贴失败
+	</string>
+	<string name="copying">正在复制……
+	</string>
+	<string name="moving">正在移动……
+	</string>
+	<string name="canceling">正在取消……
+	</string>
+	<string name="deletefile_notempty">当前文件夹不为空，确定要删除该文件夹下的所有文件和文件夹？
+	</string>
+</resources>

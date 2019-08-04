@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_height="wrap_content"
+	android:layout_width="match_parent"
+	android:padding="10dp"
+	android:orientation="vertical">
+	<TextView
+		android:id="@+id/file_copyOprate"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:layout_weight="1"
+		android:textSize="18sp"
+		android:text="正在复制…"
+		android:textColor="@color/black"
+		android:singleLine="true"/>
+	<LinearLayout
+		android:layout_height="wrap_content"
+		android:layout_width="fill_parent"
+		android:orientation="horizontal"
+		android:paddingLeft="10dp"
+		android:paddingRight="10dp"
+		android:paddingTop="10dp">
+		<TextView
+			android:id="@+id/file_copyName"
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:layout_weight="1"
+			android:textSize="12sp"
+			android:text="正在计算…"
+			android:textColor="#666666"
+			android:singleLine="true"/>
+		<TextView
+			android:id="@+id/file_copyPercent"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:textSize="12sp"
+			android:textColor="#666666"
+			android:singleLine="true"
+			android:text="0%"/>
+	</LinearLayout>
+
+	<ProgressBar
+		android:id="@+id/file_copyProgress"
+		style="?android:attr/progressBarStyleHorizontal"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:paddingLeft="10dp"
+		android:paddingRight="10dp"
+		android:process="0"
+		android:max="100"/>
+
+</LinearLayout>
+

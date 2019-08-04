@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="fileEndingImage">
+        <item>.png</item><item>.PNG</item>
+        <item>.gif</item><item>.GIF</item>
+        <item>.jpg</item><item>.JPG</item>
+        <item>.jpeg</item><item>.JPEG</item>
+        <item>.bmp</item><item>.BMP</item>
+        <item>.me</item><item>.ME</item>
+        <item>.psd</item><item>.PSD</item>
+        <item>.pnm</item><item>.PNM</item>
+        <item>.pnz</item><item>.PNZ</item>
+		<item>.raw</item><item>.RAW</item>
+    </array>
+    <array name="fileEndingAudio">
+        <item>.mp2</item><item>.MP2</item>
+        <item>.mp3</item><item>.MP3</item>
+        <item>.mpga</item><item>.MPGA</item>
+        <item>.wav</item><item>.WAV</item>
+        <item>.ogg</item><item>.OGG</item>
+        <item>.midi</item><item>.MIDI</item>
+        <item>.wma</item><item>.WMA</item>
+        <item>.m3u</item><item>.M3U</item>
+        <item>.m4a</item><item>.M4A</item>
+        <item>.m4b</item><item>.M4B</item>
+        <item>.m4p</item><item>.M4P</item>
+        <item>.amr</item><item>.AMR</item>
+        <item>.aac</item><item>.AAC</item>
+        <item>.mid</item><item>.MID</item>
+        <item>.flac</item><item>.FLAC</item>
+        <item>.wpe</item><item>.WPE</item>
+        <item>.awb</item><item>.AWB</item>
+        <item>.awd</item><item>.AWD</item>
+        <item>.ape</item><item>.APE</item>
+        <item>.pac</item><item>.PAC</item>
+        <item>.pae</item><item>.PAE</item>
+		<item>.wv</item><item>.WV</item>
+    </array>
+    <array name="fileEndingPackage">
+        <item>.jar</item><item>.JAR</item>
+        <item>.zip</item><item>.ZIP</item>
+        <item>.rar</item><item>.RAR</item>
+        <item>.gz</item><item>.GZ</item>
+        <item>.tar</item><item>.TAR</item>
+        <item>.7z</item><item>.7Z</item>
+        <item>.iso</item><item>.ISO</item>
+        <item>.gtar</item><item>.GTAR</item>
+		<item>.gzip</item><item>.GZIP</item>
+    </array>
+    <array name="fileEndingWebText">
+        <item>.htm</item><item>.HTM</item>
+        <item>.html</item><item>.HTML</item>
+        <item>.php</item><item>.PHP</item>
+        <item>.asp</item><item>.ASP</item>
+        <item>.aspx</item><item>.ASPX</item>
+		<item>.mht</item><item>.MHT</item>
+		<item>.shtml</item><item>.SHTML</item>
+		<item>.jsp</item><item>.JSP</item>
+		<item>.xhtml</item><item>.XHTML</item>
+		<item>.shtml</item><item>.SHTML</item>
+    </array>
+    <array name="fileEndingVideo">
+        <item>.mp4</item><item>.MP4</item>
+		<item>.mp5</item><item>.MP5</item>
+        <item>.rm</item><item>.RM</item>
+        <item>.mpg</item><item>.MPG</item>
+        <item>.asf</item><item>.ASF</item>
+        <item>.avi</item><item>.AVI</item>
+        <item>.mpeg</item><item>.MPEG</item>
+        <item>.rmvb</item><item>.RMVB</item>
+        <item>.flv</item><item>.FLV</item>
+        <item>.3gp</item><item>.3GP</item>
+        <item>.3gpp</item><item>.3GPP</item>
+        <item>.mpe</item><item>.WPE</item>
+        <item>.dvd</item><item>.DVD</item>
+		<item>.h263</item><item>.H263</item>
+        <item>.bhd</item><item>.BHD</item>
+        <item>.mov</item><item>.MOV</item>
+		<item>.wmv</item><item>.WMV</item>
+        <item>.mkv</item><item>.MKV</item>
+        <item>.mqv</item><item>.MQV</item>
+        <item>.f4v</item><item>.F4V</item>
+        <item>.m4v</item><item>.M4V</item>
+        <item>.m4u</item><item>.M4U</item>
+        <item>.zdv</item><item>.ZDV</item>
+        <item>.mv</item><item>.MV</item>
+		<item>.awf</item><item>.AWF</item>
+		<item>.fla</item><item>.FLA</item>
+		<item>.ifox</item><item>.aux</item>
+		<item>.gp2</item><item>.priv</item>
+    </array>
+    <array name="textfile">
+        <item>.txt</item><item>.TXT</item>
+		<item>.text</item><item>.TEXT</item>
+        <item>.xml</item><item>.XML</item>
+        <item>.java</item><item>.JAVA</item>
+        <item>.prop</item><item>.PROP</item>
+        <item>.ini</item><item>.INI</item>
+        <item>.log</item><item>.LOG</item>
+        <item>.lrc</item><item>.LRC</item>
+        <item>.asc</item><item>.ASC</item>
+        <item>.h</item><item>.H</item>
+        <item>.sh</item><item>.SH</item>
+        <item>.ebk</item><item>.EBK</item>
+        <item>.ebk2</item><item>.EBK2</item>
+        <item>.class</item><item>.CLASS</item>
+        <item>.rc</item><item>.RC</item>
+        <item>.c</item><item>.C</item>
+		<item>.cs</item><item>.CS</item>
+        <item>.css</item><item>.CSS</item>
+        <item>.cpp</item><item>.CPP</item>
+        <item>.js</item><item>.JS</item>
+        <item>.inf</item><item>.INF</item><item>.Inf</item>
+        <item>.conf</item><item>.CONF</item><item>.Conf</item>
+		<item>.reg</item><item>.REG</item>
+		<item>.bat</item><item>.BAT</item>
+		<item>.config</item><item>.mk</item>
+    </array>
+    <array name="app">
+        <item>.apk</item><item>.APK</item>
+		<item>.exe</item><item>.EXE</item>
+    </array>
+    <array name="word">
+        <item>.doc</item><item>.DOC</item>
+        <item>.docx</item><item>.DOCX</item>
+		<item>.doe</item><item>.DOE</item>
+		<item>.ref</item><item>.REF</item>
+    </array>
+    <array name="excel">
+        <item>.xls</item><item>.XLS</item>
+        <item>.xlsx</item><item>.XLSX</item>
+        <item>.csv</item><item>.CSV</item>
+    </array>
+    <array name="ppt">
+        <item>.ppt</item><item>.PPT</item>
+        <item>.pptx</item><item>.PPTX</item>
+        <item>.pps</item><item>.PPS</item>
+    </array>
+    <array name="pdf">
+        <item>.pdf</item><item>.PDF</item>
+    </array>
+    <array name="database">
+        <item>.db</item><item>.DB</item>
+        <item>.database</item><item>.DATABASE</item><item>.DataBase</item>
+        <item>.sqlite</item><item>.SQLITE</item><item>.SQLite</item>
+        <item>.dll</item><item>.DLL</item>
+    </array>
+</resources>

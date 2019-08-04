@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent"
+	android:gravity="center"
+	android:orientation="vertical"
+	android:background="#FFFFFF">
+
+	<EditText
+		android:id="@+id/textView01"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:text="开始"
+		android:textSize="80sp"
+		android:textColor="#000000"
+		android:gravity="center"
+		android:background="@null"/>
+
+	<LinearLayout
+		android:layout_width="match_parent"
+		android:layout_height="60dp"
+		android:orientation="horizontal">
+
+		<Button
+			android:id="@+id/button01"
+			android:layout_width="match_parent"
+			android:layout_height="58dp"
+			android:layout_weight="1"
+			android:text="增加"
+			android:layout_marginTop="10dp"/>
+
+		<Button
+			android:id="@+id/button02"
+			android:layout_width="match_parent"
+			android:layout_height="58dp"
+			android:layout_weight="1"
+			android:text="减少"
+			android:layout_marginTop="10dp"/>
+
+	</LinearLayout>
+
+	<LinearLayout
+		android:layout_width="match_parent"
+		android:layout_height="30dp"
+		android:layout_marginTop="26dp"
+		android:orientation="horizontal">
+
+		<Button
+			android:id="@+id/black"
+			android:layout_width="match_parent"
+			android:layout_height="fill_parent"
+			android:layout_weight="1"
+			android:background="#000000"/>
+
+		<Button
+			android:id="@+id/red"
+			android:layout_width="match_parent"
+			android:layout_height="fill_parent"
+			android:layout_weight="1"
+			android:background="#FF0000"/>
+
+		<Button
+			android:id="@+id/green"
+			android:layout_width="match_parent"
+			android:layout_height="fill_parent"
+			android:layout_weight="1"
+			android:background="#00FF00"/>
+
+		<Button
+			android:id="@+id/blue"
+			android:layout_width="match_parent"
+			android:layout_height="fill_parent"
+			android:layout_weight="1"
+			android:background="#0000FF"/>
+
+	</LinearLayout>
+
+</LinearLayout>
+

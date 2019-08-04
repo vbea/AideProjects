@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             android:layout_width="fill_parent"
+             android:layout_height="fill_parent">
+
+  <SurfaceView android:id="@+id/preview_view"
+               android:layout_width="fill_parent"
+               android:layout_gravity="center"
+               android:layout_height="fill_parent"
+               android:layout_centerInParent="true"/>
+
+  <com.zijunlin.Zxing.Demo.view.ViewfinderView
+      android:id="@+id/viewfinder_view"
+      android:layout_width="fill_parent"
+      android:layout_height="fill_parent"
+      android:background="@color/transparent"/>
+
+</FrameLayout>

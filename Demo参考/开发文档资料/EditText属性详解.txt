@@ -1,0 +1,25 @@
+以下是对android中EditText的属性进行了详细的分析介绍，需要的朋友可以过来参考下  
+　　EditText继承TextView，所以EditText具有TextView的属性特点，下面主要介绍一些EditText的特有的输入法的属性特点
+　　android:layout_gravity="center_vertical"：设置控件显示的位置：默认top，这里居中显示，还有bottom
+　　android:hin：Text为空时显示的文字提示信息，可通过textColorHint设置提示信息的颜色。
+android:singleLine：设置单行输入，一旦设置为true，则文字不会自动换行。
+android:gray="top" ：多行中指针在第一行第一位置et.setSelection(et.length());：调整光标到最后一行
+android:autoText ：自动拼写帮助。这里单独设置是没有效果的，可能需要其他输入法辅助才行
+android:capitalize ：设置英文字母大写类型。设置如下值：sentences仅第一个字母大写；words每一个单词首字母大小，用空格区分单词；characters每一个英文字母都大写。
+android:digits ：设置允许输入哪些字符。如“1234567890.+-*/%n()”
+android:singleLine ：是否单行或者多行，回车是离开文本框还是文本框增加新行android:numeric ：如果被设置，该TextView接收数字输入。有如下值设置：integer正整数、signed带符号整数、decimal带小数点浮点数。
+android:inputType:设置文本的类型
+android:password ：密码，以小点”.”显示文本
+android:phoneNumber ：设置为电话号码的输入方式。
+android:editable ：设置是否可编辑。仍然可以获取光标，但是无法输入。
+android:autoLink=”all” ：设置文本超链接样式当点击网址时，跳向该网址
+android:textColor = "#ff8c00"：字体颜色
+android:textStyle="bold"：字体，bold, italic, bolditalic
+android:textAlign="center"：EditText没有这个属性，但TextView有
+android:textColorHighlight="#cccccc"：被选中文字的底色，默认为蓝色
+android:textColorHint="#ffff00"：设置提示信息文字的颜色，默认为灰色
+android:textScaleX="1.5"：控制字与字之间的间距
+android:typeface="monospace"：字型，normal, sans, serif, monospace
+android:background="@null"：空间背景，这里没有，指透明
+android:layout_weight="1"：权重在控制控件显示的大小时蛮有用的。
+android:textAppearance="?android:attr/textAppearanceLargeInverse"：文字外观，这里引用的是系统自带的一个外观，？表示系统是否有这种外观，否则使用默认的外观。

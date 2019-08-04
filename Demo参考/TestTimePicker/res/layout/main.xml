@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    >
+ <TextView  
+    android:id="@+id/time_tv"
+    android:layout_width="fill_parent" 
+    android:layout_height="wrap_content" 
+    android:text="@string/hello">
+ </TextView>
+    
+    <Button
+     android:id="@+id/pick_bt"
+     android:layout_width="wrap_content"
+     android:layout_height="wrap_content"
+     android:text="时间选择器"
+     android:onClick="buttonClick">
+    </Button>
+</LinearLayout>

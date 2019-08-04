@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.umeng.soexample"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/icon"
+        android:label="@string/app_name"
+        android:theme="@android:style/Theme.Black.NoTitleBar" >
+        <activity
+            android:name="com.umeng.soexample.activity.WelActivity"
+            android:configChanges="orientation|keyboard"
+            android:label="@string/app_name"
+            android:noHistory="true"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- 友盟AppKey， 需要替换成你自己的 -->
+        <meta-data
+            android:name="UMENG_APPKEY"
+            android:value="4eaee02c527015373b000003" >
+        </meta-data>
+        <!-- 4eaee02c527015373b000003 -->
+        <!-- android:value="52a98cf856240b902211203e" > -->
+
+
+        <!-- *************************    分享相关的注册 START **************************** -->
+        <!-- 分享内容编辑页 -->
+        <activity
+            android:name="com.umeng.socialize.view.ShareActivity"
+            android:configChanges="orientation|keyboard"
+            android:launchMode="singleTask"
+            android:noHistory="true"
+            android:theme="@style/Theme.UMDialog"
+            android:windowSoftInputMode="stateVisible|adjustResize" >
+        </activity>
+
+        <!-- 腾讯SSO授权的Activity注册 -->
+        <activity
+            android:name="com.tencent.tauth.AuthActivity"
+            android:launchMode="singleTask"
+            android:noHistory="true" >
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:scheme="tencent100424468" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.tencent.connect.common.AssistActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+
+        <!-- 微信回调activity -->
+        <activity
+            android:name=".wxapi.WXEntryActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:exported="true"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+
+        <!-- 易信回调activity -->
+        <activity
+            android:name=".yxapi.YXEntryActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:exported="true"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+
+        <!-- 人人SSO授权所需的OAuthActivity -->
+        <activity
+            android:name="com.renn.rennsdk.oauth.OAuthActivity"
+            android:configChanges="orientation|navigation|keyboardHidden" />
+
+        <!-- facebook相关 -->
+        <activity android:name=".activity.FacebookActivity" >
+        </activity>
+        <activity
+            android:name="com.facebook.LoginActivity"
+            android:label="@string/app_name"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+
+        <!-- *************************    分享相关的注册 END **************************** -->
+
+
+        <!-- 评论相关注册  START -->
+        <activity
+            android:name="com.umeng.socialize.view.CommentActivity"
+            android:configChanges="orientation|keyboard"
+            android:theme="@style/Theme.UMDefault" >
+        </activity>
+        <activity
+            android:name="com.umeng.socialize.view.CommentDetail"
+            android:configChanges="orientation|keyboard"
+            android:noHistory="true"
+            android:theme="@style/Theme.UMDefault" >
+        </activity>
+        <activity
+            android:name="com.umeng.socialize.view.CommentDetailNoMap"
+            android:configChanges="orientation|keyboard"
+            android:noHistory="true"
+            android:theme="@style/Theme.UMDefault" >
+        </activity>
+        <!-- 评论相关注册  End -->
+
+
+        <!-- Socialize Example Activity -->
+        <!--
+             <activity
+            android:name=".socialize.SocialHome"
+            android:label="@string/umeng_example_home_btn_plus" >
+        </activity>
+        -->
+
+        <activity
+            android:name="com.umeng.soexample.activity.SoclialNavigationActivity"
+            android:configChanges="orientation|keyboard"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme" >
+        </activity>
+        <activity
+            android:name="com.umeng.soexample.activity.SocialHomeActivity"
+            android:configChanges="orientation|keyboard"
+            android:label="@string/app_name" >
+        </activity>
+        <activity
+            android:name="com.umeng.soexample.activity.SwitchActivity"
+            android:configChanges="orientation|keyboard"
+            android:label="@string/app_name"
+            android:launchMode="standard" >
+        </activity>
+        <activity
+            android:name="com.umeng.soexample.activity.CustomPlatformActivity"
+            android:configChanges="orientation|keyboard"
+            android:label="@string/umeng_example_home_btn_plus" >
+        </activity>
+        <activity
+            android:name=".socialize.dashboard.ActionBarExample"
+            android:configChanges="orientation|keyboard"
+            android:label="@string/umeng_example_home_btn_plus" >
+        </activity>
+        <activity
+            android:name=".socialize.dashboard.AnalyticsMODExample"
+            android:configChanges="orientation|keyboard"
+            android:label="@string/umeng_example_home_btn_plus" >
+        </activity>
+        <activity
+            android:name=".socialize.dashboard.ActionBarExampleDetail"
+            android:configChanges="orientation|keyboard"
+            android:label="@string/umeng_example_home_btn_plus"
+            android:noHistory="true" >
+        </activity>
+        <activity
+            android:name=".socialize.dashboard.ActionBarViewPagerSingel"
+            android:configChanges="orientation|keyboard"
+            android:label="@string/umeng_example_home_btn_plus" >
+        </activity>
+        <activity
+            android:name="com.umeng.ut.UTActivity"
+            android:configChanges="orientation|keyboard"
+            android:label="For Social Test"
+            tools:ignore="DuplicateActivity" >
+        </activity>
+        <activity
+            android:name="com.umeng.ut.UTFragmentActivity"
+            android:configChanges="orientation|keyboard"
+            android:label="For Social Test"
+            tools:ignore="DuplicateActivity" >
+        </activity>
+
+        <meta-data
+            android:name="UMENG_CHANNEL"
+            android:value="Umeng" >
+        </meta-data>
+
+        <uses-library
+            android:name="com.google.android.maps"
+            android:required="false" />
+        <uses-library android:name="android.test.runner" />
+    </application>
+
+    <!-- instrumentation -->
+    <instrumentation
+        android:name="android.test.InstrumentationTestRunner"
+        android:targetPackage="com.umeng.soexample" />
+
+    <uses-sdk
+        android:minSdkVersion="4"
+        android:targetSdkVersion="14" />
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_LOGS" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
+    <!-- renren sso Permission for Unit Test -->
+    <uses-permission android:name="android.permission.GET_TASKS" />
+    <uses-permission android:name="android.permission.SET_DEBUG_APP" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.USE_CREDENTIALS" />
+    <uses-permission android:name="android.permission.MANAGE_ACCOUNTS" />
+
+</manifest>

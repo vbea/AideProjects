@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rootId"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#F8F8F8" >
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="10dp"
+        android:text="应用联盟"
+        android:textColor="#000000"
+        android:textSize="30dp"
+        android:textStyle="bold" >
+    </TextView>
+
+    <ImageView
+        android:id="@+id/umeng_banner_promotion"
+        android:layout_width="fill_parent"
+        android:layout_height="100dp"
+        android:layout_below="@id/title"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/umeng_example_common_banner_promotion" >
+    </ImageView>
+
+    <TextView
+        android:id="@+id/content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/umeng_banner_promotion"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="10dp"
+        android:text="全面的移动广告管理方案，优化广告效果，实时调控及报表分析。" >
+    </TextView>
+
+    <ImageView
+        android:id="@+id/banner"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/umeng_example_xp_logo" >
+    </ImageView>
+
+</RelativeLayout>

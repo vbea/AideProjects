@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent"
+	android:layout_height="wrap_content">
+
+	<LinearLayout
+		android:layout_width="fill_parent"
+		android:layout_height="fill_parent"
+		android:orientation="vertical">
+
+		<LinearLayout
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:orientation="vertical">
+
+			<EditText
+				android:id="@+id/et_text"
+				android:layout_width="fill_parent"
+				android:layout_height="50dp"
+				android:phoneNumber="true"
+				android:hint="请输入要转换的数字"/>
+
+			<LinearLayout
+				android:layout_width="fill_parent"
+				android:layout_height="wrap_content"
+				android:orientation="horizontal">
+
+				<Spinner
+					android:id="@+id/et_aS"
+					android:layout_width="70dp"
+					android:layout_height="50dp"
+					android:hint="a进制"/>
+				<TextView
+					android:layout_width="70dp"
+					android:layout_height="wrap_content"
+					android:textColor="#ff0000"
+					android:text="转换为"/>
+
+				<Spinner
+					android:id="@+id/et_bS"
+					android:layout_width="70dp"
+					android:layout_height="50dp"/>
+
+				<Button
+					android:id="@+id/btn_chng"
+					android:layout_width="fill_parent"
+					android:layout_height="50dp"
+					android:text="转换"/>
+
+			</LinearLayout>
+
+		</LinearLayout>
+
+		<TextView
+			android:layout_width="fill_parent"
+			android:layout_height="1dp"
+			android:background="#00ff00"
+			android:text=""/>
+
+		<EditText
+			android:id="@+id/et_after"
+			android:layout_width="fill_parent"
+			android:phoneNumber="true"
+			android:layout_height="100dp"/>
+
+	</LinearLayout>
+
+</ScrollView>
+

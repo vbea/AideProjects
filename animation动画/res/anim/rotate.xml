@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<set xmlns:android="http://schemas.android.com/apk/res/android">
+<rotate
+android:interpolator="@android:anim/accelerate_decelerate_interpolator"
+android:fromDegrees="300"
+android:toDegrees="-360"
+android:pivotX="10%"
+android:pivotY="100%"
+android:duration="1000" />
+</set>
+<!-- 
+fromDegrees开始时的角度
+toDegrees动画结束时角度
+pivotX,pivotY不太清楚，看效果应该是定义旋转的圆心的
+ -->

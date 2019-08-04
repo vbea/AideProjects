@@ -1,0 +1,7 @@
+
+<br>
+<h2> SlidingMenu 是 Android 上实现类似 Facebook 和 Path 2.0 滑动式菜单的组件。同是它也引用了开源控件ActionBarSherlock，需要引用ActionBarSherlock项目才可使用。
+<br> 官方网站：https://github.com/jfeinstein10/SlidingMen
+<br><h3>整理By：广州|城管猴 ，Touch Android①群：107086751
+<br>论坛使用说明：http://bbs.droidstouch.com/thread-2236-1-1.html
+<br> email:mcdull525@foxmail.com

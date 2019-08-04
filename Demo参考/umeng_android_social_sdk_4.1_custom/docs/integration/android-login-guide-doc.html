@@ -1,0 +1,247 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><link rel="stylesheet" type="text/css" href="markdown.css"></link></head><body>
+</body></html><h1>授权与登录 快速集成</h1>
+<p><input name="pinList" type="hidden" value="1"/></p>
+<ul>
+<li>1.<a href="#sign_info">产品概述</a></li>
+<li>2.<a href="#obtain_umeng_key">获取友盟AppKey</a></li>
+<li>3.<a href="#download_integration">下载并安装SDK</a></li>
+<li>4.<a href="#open_user_center">打开用户中心</a></li>
+<li>5.<a href="#result">验证结果</a></li>
+<li>6.<a href="#jar_map">平台jar文件对应列表</a></li>
+<li>7.<a href="#platform_register_address">应用信息注册地址列表</a></li>
+<li>8.<a href="#proguard">混淆</a></li>
+</ul>
+<p><b id=sign_info></b></p>
+<h2>1 产品概述</h2>
+<p>通过登录控件，用户可以指定社交平台账号作为应用内账号，您可以获取此账号信息来识别用户身份，例如在界面中显示用户头像和昵称等信息。登录组件利用社交平台简化了用户的登录过程，也为用户身份识别提供了更通用的方法。 <br />
+<b id=obtain_umeng_key></b> </p>
+<h2>2 获取友盟Appkey</h2>
+<p>如果你之前已经在友盟注册了应用，并获取到了Appkey，可以继续使用它。</p>
+<p>如果你尚未在友盟注册开发者账号，需要先<a href="http://www.umeng.com/users/sign_up">注册</a>，注册之后登录你的账号，点击<strong>添加新应用</strong>，填写完应用基本信息后，将进入"下载SDK并添加代码"页面，此页面即可得到<code>Appkey</code></p>
+<p><b id=download_integration></b> </p>
+<h2>3 下载并安装SDK</h2>
+<h4>Step 1: 下载<a href="http://dev.umeng.com/social/android/sdk-download">最新版</a></h4>
+<h4>step 2:添加jar文件跟资源文件</h4>
+<h5>2.1 添加jar文件</h5>
+<p>1.将下载包中的components/user_center/libs/SocialSDK_UserCenter.jar文件拷贝到你工程libs目录；   <br />
+2.在你工程中libs目录中找到SocialSDK_UserCenter.jar文件，鼠标右键--&gt;Add to Build Path。      </p>
+<h5>2.2 添加资源文件</h5>
+<p>1.将下载包中components/user_center/res下的资源文件拷贝至你工程的res目录</p>
+<h3>Step 3: 在工程'AndroidManifest.xml'声明SDK使用的权限，Activity以及UmengAppkey,如下面代码中中标注的部分</h3>
+<pre><code class="xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;manifest xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
+    package=&quot;com.umeng.example&quot;
+    android:versionCode=&quot;1&quot;
+    android:versionName=&quot;1.0&quot; &gt;
+
+    &lt;application
+        android:debuggable=&quot;true&quot;
+        android:icon=&quot;@drawable/icon&quot;
+        android:label=&quot;@string/app_name&quot;
+        android:theme=&quot;@android:style/Theme.Black.NoTitleBar&quot; &gt;
+
+        &lt;!-- ###################添加UmengAppkey###################### --&gt;
+        &lt;meta-data
+            android:name=&quot;UMENG_APPKEY&quot;
+            android:value=&quot;xxxxxxxxxxxxxxxxxxxxxx&quot; &gt;
+        &lt;/meta-data&gt;
+
+    &lt;/application&gt;
+
+    &lt;uses-sdk android:minSdkVersion=&quot;8&quot; /&gt;
+
+    &lt;!-- ###################声明SDK使用的相关权限###################### --&gt;
+    &lt;!-- 检测网络状态 --&gt;
+    &lt;uses-permission android:name=&quot;android.permission.ACCESS_NETWORK_STATE&quot; /&gt;  
+    &lt;!-- 获取mac地址作为用户的备用唯一标识 --
+    &lt;uses-permission android:name=&quot;android.permission.ACCESS_WIFI_STATE&quot; /&gt;     
+    &lt;!-- 获取用户手机的IMEI，用来唯一的标识用户 --&gt;
+    &lt;uses-permission android:name=&quot;android.permission.READ_PHONE_STATE&quot; /&gt;      
+    &lt;!-- 缓存资源优先存入SDcard --&gt;
+    &lt;uses-permission android:name=&quot;android.permission.WRITE_EXTERNAL_STORAGE&quot; /&gt;
+    &lt;!-- 允许应用程序联网，以便向我们的服务器端发送数据 --&gt;
+    &lt;uses-permission android:name=&quot;android.permission.INTERNET&quot; /&gt;   
+&lt;/manifest&gt;
+</code></pre>
+
+<p><b id=open_user_center></b></p>
+<h2>4 打开用户中心</h2>
+<p>首先在您的Activity中添加如下成员变量</p>
+<pre><code class="java">final UMSocialService mController = UMServiceFactory.getUMSocialService(&quot;com.umeng.login&quot;);
+</code></pre>
+
+<p>flag:</p>
+<table>
+<thead>
+<tr>
+<th align="center">FLAG</th>
+<th align="center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">SocializeConstants.FLAG_USER_CENTER_LOGIN_VERIFY</td>
+<td align="center">必须是已登录用户才能打开用户中心，否则将先要求登录</td>
+</tr>
+<tr>
+<td align="center">SocializeConstants.FLAG_USER_CENTER_HIDE_LOGININFO</td>
+<td align="center">不显示用户中心页登录信息区域</td>
+</tr>
+<tr>
+<td align="center">SocializeConstants.FLAG_USER_CENTER_HIDE_SNSINFO</td>
+<td align="center">不显示用户中心平台授权状态设置区域</td>
+</tr>
+</tbody>
+</table>
+<p>flag:使用说明</p>
+<p><strong>场景一：只显示授权区域</strong></p>
+<pre><code class="java">mController.openUserCenter(context,SocializeConstants.FLAG_USER_CENTER_HIDE_LOGININFO);
+</code></pre>
+
+<p><strong>场景二：只显示登录区域，并且只有登录用户才能打开用户中心</strong></p>
+<pre><code class="java">int flag = SocializeConstants.FLAG_USER_CENTER_LOGIN_VERIFY|
+                              SocializeConstants.FLAG_USER_CENTER_HIDE_LOGININFO;
+mController.openUserCenter(context,flag);
+</code></pre>
+
+<p><b id=result></b></p>
+<h2>5 验证效果</h2>
+<p>编译并运行后，点击添加分享功能的View出现如下授权页，那么说明你已经集成成功了！</p>
+<p>页面概述：</p>
+<p>上半部分是友盟帐号的登录状态信息，如果没有登录将显示登录按钮，下半部分是各个平台的授权状态，可对单个平台进行授权和解授权操作。</p>
+<table>
+<thead>
+<tr>
+<th align="center"></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center"><img src="http://dev.umeng.com/images/android/ucenter.png" width="240" height="400"></td>
+</tr>
+<tr>
+<td align="center">用户中心效果</td>
+</tr>
+</tbody>
+</table>
+<p><b id=jar_map></b></p>
+<h2>6 平台jar文件对应列表</h2>
+<table>
+<thead>
+<tr>
+<th align="center">平台</th>
+<th align="center">jar文件</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">腾讯微博</td>
+<td align="center">SocialSDK_TencentWB_1.jar,SocialSDK_TencentWB_2.jar</td>
+</tr>
+<tr>
+<td align="center">QQ空间</td>
+<td align="center">SocialSDK_QQZone_1.jar,SocialSDK_QQZone_2.jar,SocialSDK_QQZone_3.jar</td>
+</tr>
+<tr>
+<td align="center">微信好友</td>
+<td align="center">SocialSDK_WeiXin.jar</td>
+</tr>
+<tr>
+<td align="center">QQ</td>
+<td align="center">SocialSDK_QQZone_1.jar,SocialSDK_QQZone_2.jar,SocialSDK_QQZone_3.jar</td>
+</tr>
+</tbody>
+</table>
+<p><b id=platform_register_address></b></p>
+<h2>7 应用信息注册地址列表</h2>
+<p>下面是Social SDK不同平台应用信息注册网站的地址:  </p>
+<table>
+<thead>
+<tr>
+<th align="center">平台</th>
+<th align="center">网址</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">新浪微博</td>
+<td align="center">http://open.weibo.com</td>
+</tr>
+<tr>
+<td align="center">腾讯微博</td>
+<td align="center">http://dev.t.qq.com</td>
+</tr>
+<tr>
+<td align="center">QQ空间</td>
+<td align="center">http://connect.qq.com/intro/login/</td>
+</tr>
+<tr>
+<td align="center">微信好友</td>
+<td align="center">http://open.weixin.qq.com</td>
+</tr>
+<tr>
+<td align="center">FaceBook</td>
+<td align="center">https://developers.facebook.com</td>
+</tr>
+<tr>
+<td align="center">Twitter</td>
+<td align="center">https://dev.twitter.com</td>
+</tr>
+<tr>
+<td align="center">人人</td>
+<td align="center">http://dev.renren.com</td>
+</tr>
+<tr>
+<td align="center">豆瓣</td>
+<td align="center">http://developers.douban.com/</td>
+</tr>
+</tbody>
+</table>
+<p><b id=proguard></b></p>
+<h2>8 混淆</h2>
+<p>为了保证引用友盟Social SDK jar文件以及腾讯jar文件被混淆，请在proguard.cfg文件中添加以下代码避免被混淆.       </p>
+<pre><code class="text">
+-dontshrink
+-dontoptimize
+-dontwarn com.google.android.maps.**
+-dontwarn android.webkit.WebView
+-dontwarn com.umeng.**
+-dontwarn com.tencent.weibo.sdk.**
+-dontwarn com.facebook.**
+
+-libraryjars libs/SocialSDK_QQZone_2.jar
+
+-keep enum com.facebook.**
+-keepattributes Exceptions,InnerClasses,Signature
+-keepattributes *Annotation*
+-keepattributes SourceFile,LineNumberTable
+
+-keep public interface com.facebook.**
+-keep public interface com.tencent.**
+-keep public interface com.umeng.socialize.**
+-keep public interface com.umeng.socialize.sensor.**
+-keep public interface com.umeng.scrshot.**
+
+-keep public class com.umeng.socialize.* {*;}
+-keep public class javax.**
+-keep public class android.webkit.**
+
+-keep class com.facebook.**
+-keep class com.umeng.scrshot.**
+-keep public class com.tencent.** {*;}
+-keep class com.umeng.socialize.sensor.**
+
+-keep class com.tencent.mm.sdk.modelmsg.WXMediaMessage {*;}
+
+-keep class com.tencent.mm.sdk.modelmsg.** implements com.tencent.mm.sdk.modelmsg.WXMediaMessage$IMediaObject {*;}
+
+-keep class im.yixin.sdk.api.YXMessage {*;}
+-keep class im.yixin.sdk.api.** implements im.yixin.sdk.api.YXMessage$YXMessageData{*;}
+
+-keep public class [your_pkg].R$*{
+    public static final int *;
+}
+</code></pre>
+
+<h2>8 进阶使用</h2>
+<p>如果上述文档不能满足你的分享需求，请移步至<a href="http://dev.umeng.com/social/android/login-page/specific-integration">详细集成文档</a>。</p></body></html>

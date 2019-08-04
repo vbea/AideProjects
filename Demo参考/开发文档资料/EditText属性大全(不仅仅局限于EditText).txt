@@ -1,0 +1,58 @@
+一、inputType属性
+inputType属性在EditText输入值时启动的虚拟键盘的风格有着重要的作用。比如有时需要虚拟键盘只为字符或只为数字。 
+<EditText 
+    //电话号码 
+    android:inputType="phone"  
+    //文本类型，多为大写、小写和数字符号。  
+    android:inputType="none"  
+    android:inputType="text"  
+    android:inputType="textCapCharacters" //字母大写  
+    android:inputType="textCapWords" //首字母大写  
+    android:inputType="textCapSentences" //仅第一个字母大写  
+    android:inputType="textAutoCorrect" //自动完成  
+    android:inputType="textAutoComplete" //自动完成  
+    android:inputType="textMultiLine" //多行输入  
+    android:inputType="textImeMultiLine" //输入法多行（如果支持）  
+    android:inputType="textNoSuggestions" //不提示  
+    android:inputType="textUri" //网址  
+    android:inputType="textEmailAddress" //电子邮件地址  
+    android:inputType="textEmailSubject" //邮件主题  
+    android:inputType="textShortMessage" //短讯  
+    android:inputType="textLongMessage" //长信息  
+    android:inputType="textPersonName" //人名  
+    android:inputType="textPostalAddress" //地址 
+    android:inputType="textPassword" //密码  
+    android:inputType="textVisiblePassword" //可见密码 
+    android:inputType="textWebEditText" //作为网页表单的文本  
+    android:inputType="textFilter" //文本筛选过滤  
+    android:inputType="textPhonetic" //拼音输入  
+    //数值类型  
+    android:inputType="number" //数字  
+    android:inputType="numberSigned" //带符号数字格式  
+    android:inputType="numberDecimal" //带小数点的浮点格式  
+    android:inputType="datetime" //时间日期  
+    android:inputType="date" //日期键盘  
+    android:inputType="time" //时间键盘 
+    />
+二、imeOptions属性
+当我们手机横屏，且使用Android自带的软键盘为EditText进行文本输入时，若不进行特殊的设置，该软键盘会占用整个界面，那么，如何让键盘只占用屏幕的一部分呢？ 其实只需要改一个小小的属性即可！
+<EditText  
+    android:id="@+id/text1"  
+    android:imeOptions="flagNoExtractUi"/>
+另外使用android:imeOptinos可对Android自带的软键盘进行一些界面上的设置：
+android:imeOptions="flagNoExtractUi"  //使软键盘不全屏显示，只占用一部分屏幕 
+同时,这个属性还能控件软键盘右下角按键的显示内容,默认情况下为回车键 
+android:imeOptions="actionNone"  //输入框右侧不带任何提示 
+android:imeOptions="actionGo"    //右下角按键内容为'开始' 
+android:imeOptions="actionSearch"  //右下角按键为放大镜图片，搜索 
+android:imeOptions="actionSend"    //右下角按键内容为'发送' 
+android:imeOptions="actionNext"   //右下角按键内容为'下一步' 
+android:imeOptions="actionDone"  //右下角按键内容为'完成'
+同时，可能EditText添加相应的监听器，捕捉用户点击了软键盘右下角按钮的监听事件，以便进行处理。
+editText.setOnEditorActionListener(new OnEditorActionListener() { 
+    @Override 
+    public boolean onEditorAction(TextView v, int actionId, KeyEvent event) { 
+    Toast.makeText(MainActivity.this, "text2", Toast.LENGTH_SHORT).show(); 
+    return false; 
+ } 
+});

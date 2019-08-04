@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.umeng.example"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk android:minSdkVersion="8"
+        android:targetSdkVersion="18" />
+    
+    <application
+        android:debuggable="true"
+        android:icon="@drawable/icon"
+        android:label="@string/app_name"
+        android:theme="@android:style/Theme.Black.NoTitleBar" >
+        <activity
+            android:name=".UmengHome"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- Fb Activitys Start -->
+        <!--
+             <activity
+            android:label="@string/umeng_example_home_btn_fb"
+            android:name=".fb.SimpleExample" />
+        -->
+        <activity android:name="com.umeng.fb.ConversationActivity" />
+        <activity android:name="com.umeng.fb.ContactActivity" />
+        
+        <!-- Fb Activitys End -->
+        
+        
+        <!-- Update Activitys Start -->
+        <activity 
+            android:name="com.umeng.update.UpdateDialogActivity"
+		  	android:theme="@android:style/Theme.Translucent.NoTitleBar" >
+        </activity>
+
+        <!-- Update Activitys End -->
+
+
+        <!-- Analytics start -->
+        <activity
+            android:name=".analytics.AnalyticsHome"
+            android:label="@string/umeng_example_home_btn_analytics" >
+        </activity>
+        <activity android:name=".analytics.WebviewAnalytic" >
+        </activity>
+        <activity android:name=".analytics.FragmentStack"></activity>
+        <activity android:name=".analytics.FragmentTabs"></activity>
+        
+        <!-- Analytics end -->
+        <activity 
+            android:name=".update.UpdateHome"
+            android:theme="@style/AppTheme">
+        </activity>
+        <activity
+            android:name=".tools.ToolsHome"
+            android:label="@string/umeng_example_home_btn_tools" >
+        </activity>
+     
+        <activity
+            android:name=".fb.FbHome"
+            android:label="@string/umeng_example_home_btn_fb" >
+        </activity>
+
+        <!-- Caution! Do not change this app key. It is only for demo usage. -->
+        <meta-data
+            android:name="UMENG_APPKEY"
+            android:value="4f83c5d852701564c0000011" >
+        </meta-data>
+        <meta-data
+            android:name="UMENG_CHANNEL"
+            android:value="Umeng" >
+        </meta-data>
+
+        <service
+            android:name="com.umeng.update.net.DownloadingService"
+            android:process=":DownloadingService" >
+        </service>
+    </application>
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_LOGS" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+
+    <!-- Permission for Unit Test -->
+    <uses-permission android:name="android.permission.GET_TASKS" />
+
+</manifest>
