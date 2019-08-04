@@ -4,3 +4,4 @@ bin/
 Properties/
 *.suo
 Backup/
+gradle

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">短信轰炸机</string>
+    <string name="hello_world">Hello world!</string>
+	<string name="number_mobile">134,135,136,137,138,139,158,159,150,151,157,187,188,147
+	</string>
+	<string name="number_unicom">130,131,132,156,176,185,186
+	</string>
+	<string name="number_telcom">133,153,180,189
+	</string>
+</resources>
