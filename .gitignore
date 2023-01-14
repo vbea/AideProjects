@@ -5,3 +5,7 @@ Properties/
 *.suo
 Backup/
 gradle
+build
+release
+.gradle
+bin
